@@ -4,7 +4,7 @@ title = "bramaudi"
 enableEmoji = true
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
-Paginate = 2
+# Paginate = 2
 summaryLength = 5
 
 [params]
