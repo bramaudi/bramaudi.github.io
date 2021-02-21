@@ -6,7 +6,7 @@ author: bramaudi
 summary: "Program untuk memecahkan sebuah soal unik yang ada pada UTBK"
 ---
 
-Saya mencoba membuat sebuah program yang mampu memudahkan menjawab soal UTBK seperti berikut.<!--more-->
+Saya mencoba membuat sebuah program yang mampu memudahkan menjawab soal UTBK seperti berikut.
 
 ![Soal UTBK](/assets/images/puzzle-soal-utkbk.jpg "Soal dengan pertanyaan yang terkesan seperti ketikan asal²an. 🤔")
 

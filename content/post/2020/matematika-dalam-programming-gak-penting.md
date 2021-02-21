@@ -6,7 +6,7 @@ author: bramaudi
 summary: "Membahas seberapa penting kah matematika di dalam dunia pemrogramman."
 ---
 
-Dari dulu topik tentang "Yang penting logikanya" ini sering saya jumpai. <!--more-->
+Dari dulu topik tentang "Yang penting logikanya" ini sering saya jumpai.
 
 Saya pribadi sih tidak terlalu mengerti sama "joke" yang satu ini, karena disamping saya yang juga gak terlalu suka dan paham soal matematika dari dulu jadinya gak lucu² amat ngena-nya.
 
