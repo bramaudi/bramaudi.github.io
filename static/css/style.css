@@ -6,10 +6,10 @@
   background: #dddddd;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d5b49d;
+  background: #00a9e8;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7f4a24;
+  background: #0e688a;
 }
 
 html {
@@ -18,15 +18,21 @@ html {
 
 * {
   box-sizing: inherit;
+  cursor: url(/assets/kunai.cur), auto !important;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.645;
+  background: #222;
+  color: #ddd;
 }
 
-a {
-  color: #7f4a24;
+a { color: #00a9e8; text-decoration: none; }
+a:hover, a:focus {
+  text-decoration : none;
+  text-shadow: 0 0 6px #888888;
+  background-image: url(/assets/lightning.gif);
 }
 
 ol, ul {
@@ -37,8 +43,8 @@ header {
   padding: 1rem;
   display: flex;
   align-items: center;
-  border-top: .5rem solid #7f4a24;
-  border-bottom: 2px dashed #222;
+  border-top: .5rem solid #00a9e8;
+  border-bottom: 2px dashed #00a9e8;
 }
 header > a {
   text-decoration: none;
@@ -63,7 +69,8 @@ header li {
 
 main {
   padding: 1rem 0;
-  background: #f0f0f0;
+  background: #333;
+  color: #ddd;
 }
 main.single {
   padding: 1rem;
@@ -83,12 +90,13 @@ main.single {
   flex-basis: 100%;
   padding: 1rem 1rem 0;
   margin: 0 1rem 1rem;
-  background: #fff;
-  border: .1rem solid #7f4a24;
-  box-shadow: .2rem .2rem 0 #555;
+  background: #222;
+  color: #ddd;
+  border: .1rem solid #00a9e8;
+  box-shadow: .2rem .2rem 0 #39add0;
 }
 article time {
-  color: #555;
+  color: #aaa;
 }
 .summaries article h2 {
   margin: -.2rem 0 0;
@@ -100,9 +108,10 @@ article time {
 
 article.single {
   padding: 1rem;
-  background: #fff;
-  border: .1rem solid #7f4a24;
-  box-shadow: .2rem .2rem 0 #555;
+  background: #222;
+  color: #ddd;
+  border: .1rem solid #00a9e8;
+  box-shadow: .2rem .2rem 0 #39add0;
 }
 article.single h1 {
   padding: 0;
@@ -111,6 +120,9 @@ article.single h1 {
 }
 article.single .footnotes {
   margin: 1rem -1rem -.5rem;
+}
+article.single img {
+  max-width: 50%;
 }
 
 img {
@@ -122,11 +134,11 @@ pre {
   font-size: small;
   padding: 1rem;
   margin: 0;
-  border: .2rem solid #7f4a24;
+  border: .2rem solid #00a9e8;
 }
 
 .codepen {
-  border: .2rem solid #7f4a24;
+  border: .2rem solid #00a9e8;
 }
 .codepen > * {
   margin-top: -1px;
@@ -139,8 +151,8 @@ pre {
   margin: .1rem 0;
   font-size: small;
   border-radius: .3rem;
-  background: #f0f0f0;
-  border: .1rem solid #aaaaaa;
+  background: #555;
+  border: .1rem solid #aaa;
 }
 
 hr {
@@ -150,8 +162,8 @@ hr {
 blockquote {
   padding: .1rem 1rem;
   margin: .5rem 0;
-  background: #f0f0f0;
-  border-left: .3rem solid #9e816d;
+  background: #555;
+  border-left: .3rem solid #aaa;
 }
 
 table {
@@ -161,7 +173,7 @@ table {
 
 th, td {
   padding: .2rem .5rem;
-  background: #dedede;
+  background: #555;
   border: .1rem solid #aaaaaa;
 }
 
@@ -169,7 +181,7 @@ td {
   background: unset;
 }
 tr:nth-child(even) {
-  background: #f5f5f5;
+  background: #444;
 }
 
 .sub {
@@ -177,10 +189,13 @@ tr:nth-child(even) {
   margin: -1rem 1rem 0;
 }
 .sub h3 { 
-  border-left: .3rem solid #7f4a24;
+  border-left: .3rem solid #00a9e8;
   padding: 0 .8rem;
   margin: 0;
 }
+
+strong { color: #fff }
+em { color: #bbb }
 
 aside {
   border-top: 2px dashed #222;
@@ -190,8 +205,8 @@ aside h3 {
   display: inline-block;
   padding: 0 .5rem;
   margin: 1rem;
-  border: .1rem solid #7f4a24;
-  box-shadow: .2rem .2rem 0 #555;
+  border: .1rem solid #00a9e8;
+  box-shadow: .2rem .2rem 0 #39add0;
 }
 
 aside ul {
@@ -207,7 +222,7 @@ aside ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f0f0f0;
+  background: #333;
   padding: .5rem 1rem;
 }
 .pagination .pos {
@@ -220,9 +235,9 @@ aside ul {
   text-decoration: none;
   display: inline-block;
   padding: .2rem .5rem;
-  background: #fff;
-  border: .1rem solid #7f4a24;
-  box-shadow: .2rem .2rem 0 #555;
+  background: #222;
+  border: .1rem solid #00a9e8;
+  box-shadow: .2rem .2rem 0 #39add0;
 }
 .pagination .prev {
   width: 30%;
@@ -235,21 +250,33 @@ aside ul {
 }
 
 .scrollup {
-  font-family: inherit;
   user-select: none;
   position: fixed;
-  right: .5rem;
-  bottom: .5rem;
+  right: 1rem;
+  bottom: 1rem;
   cursor: pointer;
-  font-weight: bold;
-  padding: .8rem;
+  background: transparent;
   border: none;
-  background: #7f4a24;
-  color: #fff;
-  box-shadow: .2rem .2rem 0 rgba(50, 50, 50, 0.5);
+  outline: none;
+  border-radius: 100%;
+}
+.scrollup .title {
+  display: none;
 }
 .scrollup:hover {
-  background: #9e816d;
+  background: rgb(255 255 255 / 20%);
+  box-shadow: 0rem 0rem 25px 6px rgb(255 255 255 / 25%);
+}
+.scrollup:hover .title {
+  display: block;
+  position: absolute;
+  left: -5.5rem;
+  bottom: 1rem;
+  color: #fff;
+}
+
+ul, li {
+  list-style-image: url('/assets/shuriken.png');
 }
 
 ul [class*="tag-"]:hover {
@@ -263,46 +290,27 @@ ul [class*="tag-"]:hover {
   padding: 0 .3rem;
   font-family: monospace;
   font-weight: bold;
+  background: #5596dc;
   border: 1px solid black;
-  background: yellow;
-  color: black;
+  color: #333;
 }
-.tag-vue {
-  background: #2b9465;
-  color: #fff;
-}
-.tag-css {
-  background: #2862e9;
-  color: #fff;
-}
-.tag-react {
-  background: #282c34;
-  color: #61dafb;
-}
-.tag-php {
-  background: #8892bf;
-}
-.tag-server {
-  background: #dddddd;
-  color: #222;
-}
-.tag-nodejs {
-  background: #222;
-  color: #9ff1b8;
-  border-color: #222;
+[class*="tag-"]:hover {
+  background: orange;
+  background-image: url(/assets/fire.gif) !important;
+  background-position: bottom;
 }
 .tag.count {
   padding: .1rem .3rem;
   border-radius: 100%;
   font-weight: bold;
   font-size: small;
-  background: #7f4a24;
-  color: #fff;
+  background: #00a9e8;
+  color: #333;
 }
 
 footer {
   user-select: none;
-  border-top: 1px solid #aaaaaa;
+  border-top: 1px solid #404040;
   padding: 0 1rem;
   margin-top: 1rem;
   text-align: center;

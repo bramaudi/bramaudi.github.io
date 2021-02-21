@@ -1,14 +1,14 @@
-baseURL = "https://insomdev.my.id/"
+baseURL = "https://bramaudi.my.id/"
 languageCode = "id-ID"
-title = "InsomDev"
+title = "bramaudi"
 enableEmoji = true
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
-# Paginate = 2
+Paginate = 2
 summaryLength = 5
 
 [params]
-  description = "Blog yang menyajikan artikel seputar pemgrograman."
+  description = "Personal Blog, topik suka-suka."
 
 [menu]
 

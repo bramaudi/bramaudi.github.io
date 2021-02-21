@@ -1,5 +1,5 @@
 <header>
-	<img src="/icons/icon.svg" alt="logo">
+	<img src="{{ "assets/me.jpeg" | relURL }}" alt="profile pic">
 	<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
 	{{ with .Site.Menus.main }}
 	<nav>
@@ -7,9 +7,6 @@
 			{{ range . }}
 			<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
 			{{ end }}
-			<li>
-				<button onclick="toggleTheme()" id="theme_switcher">Theme</button>
-			</li>
 		</ul>
 	</nav>
 	{{ end }}

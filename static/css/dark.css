@@ -6,11 +6,16 @@ body.dark,
   color: #ddd;
 }
 
-.dark a { color: wheat }
+.dark a { color: #00a9e8; text-decoration: none; }
+.dark a:hover, .dark a:focus {
+  text-decoration : none;
+  text-shadow: 0 0 6px #888888;
+  background-image: url(/assets/lightning.gif);
+}
 
 .dark header {
-  border-top: .5rem solid wheat;
-  border-bottom: 2px dashed navajowhite;
+  border-top: .5rem solid #00a9e8;
+  border-bottom: 2px dashed #17847a;
 }
 
 .dark .summaries article,
@@ -18,8 +23,8 @@ body.dark,
 .dark aside h3,
 .dark .pagination .prev a,
 .dark .pagination .next a {
-  border: .1rem solid wheat;
-  box-shadow: .2rem .2rem 0 navajowhite;
+  border: .1rem solid #00a9e8;
+  box-shadow: .2rem .2rem 0 #17847a;
 }
 
 .dark article time {
@@ -36,28 +41,27 @@ body.dark,
 }
 
 .dark .scrollup {
-  background: wheat;
+  background: #00a9e8;
   color: #333;
   box-shadow: .2rem .2rem 0 rgba(50, 50, 50, 0.5);
 }
-.dark .scrollup:hover { background: navajowhite;}
+.dark .scrollup:hover { background: #17847a;}
 
-.dark [class*="tag-"] { color: #333 }
-.dark .tag.count {
-  background: wheat;
+.dark [class*="tag-"] {
+  background: #3dbbf7;
   color: #333;
 }
-.dark .tag-react { color: #61dafb }
-.dark .tag-nodejs { color: #9ff1b8 }
-.dark .tag-vue,
-.dark .tag-css { color: #fff }
+.dark .tag.count {
+  background: #00a9e8;
+  color: #333;
+}
 
 .dark aside,
 .dark pre,
 .dark .codepen,
 .dark .sub h3,
 .dark footer {
-  border-color: wheat;
+  border-color: #00a9e8;
 }
 
 .dark strong { color: #fff }

@@ -1,19 +1,11 @@
 ---
 title: "Tentang"
-summary: "Blog yang menyajikan artikel seputar pemgrograman."
+summary: "Blog personal, membahas berbagai topik favorit penulis."
 date: 2019-04-19T21:37:58+05:30
 ---
 
-### Apa itu InsomDev
+Halo, saya Brama Udi, seorang web developer, saya suka koding sebagai hobi namun juga sekaligus sebagai sumber penghasilan.
 
-Ini adalah sebuah blog kecil, tempat dimana terkumpulnya suatu pengalaman dan inspirasi yang tersaji dalam bentuk artikel, tujuan sederhananya adalah sebagai pengingat sekaligus `checkpoint` untuk masa depan.
+Saya biasanya membuat project sumber terbuka dan beberapa online tools, jika ingin mendapatkan pemberitahuan update seputar project2 dari saya bisa follow akun github saya, link-nya ada di pojok kanan atas, terimakasih >.<
 
-> Menulis adalah salah satu cara untuk mengikat ilmu.
-
-### Topik seputar apa saja?
-
-Tentu hal yang tidak jauh dari hobi *penulis* yaitu tentang pemrogramman, teknologi atau mungkin seni desain.
-
-### Kenapa "InsomDev"?
-
-Alasannya sederhana, blog kecil ini dibuat untuk mengisi waktu agar lebih produktif disaat susah tidur jadi mungkin untuk kepanjangan hampir terdengar seperti "*Developer yang lagi insomnia*"
+Udah itu aja, mau kenal lebih dekat yuk add facebook saya [Brama Udi](//fb.me/bramaudi)

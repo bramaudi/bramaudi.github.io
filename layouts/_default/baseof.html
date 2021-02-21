@@ -12,11 +12,9 @@
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 	<link rel="stylesheet" href="{{ "css/normalize.css" | relURL }}">
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-	<link rel="stylesheet" href="{{ "css/dark.css" | relURL }}">
 	{{ with .OutputFormats.Get "RSS" -}}
 		{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 	{{- end }}
-	<script defer src="{{ "js/theme.js" | relURL }}"></script>
 </head>
 <body>
 	{{ partial "header" . }}
