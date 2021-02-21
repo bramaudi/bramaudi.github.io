@@ -249,16 +249,23 @@ aside ul {
   margin-left: auto;
 }
 
+.scrollup::-moz-focus-inner {
+  border: 0;
+}
 .scrollup {
   user-select: none;
+  width: 5rem;
+  height: 5rem;
   position: fixed;
   right: 1rem;
   bottom: 1rem;
   cursor: pointer;
   background: transparent;
-  border: none;
+  border: 0;
   outline: none;
+  outline: 0;
   border-radius: 100%;
+  z-index: 100;
 }
 .scrollup .title {
   display: none;
@@ -270,8 +277,10 @@ aside ul {
 .scrollup:hover .title {
   display: block;
   position: absolute;
-  left: -5.5rem;
-  bottom: 1rem;
+  left: -4.5rem;
+  bottom: 3rem;
+  font-size: small;
+  font-weight: bold;
   color: #fff;
 }
 
@@ -316,6 +325,11 @@ footer {
   text-align: center;
 }
 
+footer a {
+  text-decoration : none;
+  text-shadow: 0 0 6px #888888;
+  background-image: url(/assets/lightning.gif);
+}
 
 @media screen and (min-width: 600px) {
   .summaries article {
