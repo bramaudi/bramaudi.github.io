@@ -13,9 +13,11 @@ summaryLength = 5
 [menu]
 
   [[menu.main]]
-    name = "about"
-    url = "/about/"
+    weight = 1
+    name = "tentang"
+    url = "/tentang/"
 
   [[menu.main]]
+    weight = 2
     name = "github"
     url = "http://github.com/bramaudi"
