@@ -105,7 +105,8 @@ main > .content {
   box-shadow: .2rem .2rem 0 #39add0;
 }
 article time {
-  color: #aaa;
+  color: #71afc1;
+  font-size: small;
 }
 .summaries article h2 {
   margin: -.2rem 0 0;
@@ -113,6 +114,7 @@ article time {
 }
 .summaries article h2 a {
   text-decoration: none;
+  color: #b9d5f9;
 }
 
 article.single {
@@ -141,11 +143,11 @@ pre {
   font-size: small;
   padding: 1rem;
   margin: 0;
-  border: .2rem solid #00a9e8;
+  border: .1rem solid #00a9e8;
 }
 
 .codepen {
-  border: .2rem solid #00a9e8;
+  border: .1rem solid #00a9e8;
 }
 .codepen > * {
   margin-top: -1px;
@@ -296,7 +298,7 @@ ul {
 }
 
 ul [class*="tag-"]:hover {
-  margin-left: .5rem;
+  margin-left: .2rem;
 }
 
 [class*="tag-"] {
@@ -314,6 +316,37 @@ ul [class*="tag-"]:hover {
   background: orange;
   background-image: url(/assets/fire.gif) !important;
   background-position: bottom;
+}
+.tag-javascript {
+  background: yellow;
+  color: black;
+}
+.tag-vue {
+  background: #2b9465;
+  color: #fff;
+}
+.tag-css {
+  background: #2862e9;
+  color: #fff;
+}
+.tag-react {
+  background: #282c34;
+  color: #61dafb;
+}
+.tag-php {
+  background: #8892bf;
+}
+.tag-server {
+  background: #dddddd;
+  color: #222;
+}
+.tag-nodejs {
+  background: #222;
+  color: #9ff1b8;
+  border-color: #222;
+}
+.tag-algoritma {
+  background: navajowhite;
 }
 .tag.count {
   padding: .1rem .3rem;
