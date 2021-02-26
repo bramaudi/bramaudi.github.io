@@ -1,6 +1,6 @@
 ---
 title: "Matematika Dalam Dunia Programming, Gak Penting?"
-date: 2020-07-23 20:19:11
+date: 2020-07-23T10:15:42+07:00
 tags: ['coding','algoritma']
 author: bramaudi
 summary: "Membahas seberapa penting kah matematika di dalam dunia pemrogramman."

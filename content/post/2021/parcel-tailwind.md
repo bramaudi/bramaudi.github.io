@@ -1,12 +1,12 @@
 ---
 title: "Parcel + Tailwind = 😎"
 date: 2021-01-14T21:47:31+07:00
-summary: "Menambahkan TailwindCSS (v2) pada ParcelJS (v1) bundler."
+summary: "Menambahkan TailwindCSS v2 pada Parcel bundler v1"
 author: "bramaudi"
 tags: [nodejs, javascript, css]
 ---
 
-[ParcelJS](https://parceljs.org/) adalah bundler yang cukup favorit bagi saya, selain cepat (tidak kalah dengan [esbuild](http://esbuild.github.io/)) juga tidak perlu ribet untuk konfigurasi-nya.
+[ParcelJS](https://parceljs.org/) adalah bundler yang cukup favorit bagi saya, ciri khas dari bundler yang satu ini adalah kelebihannya dalam kemudahan meng-konfigurasi yang sangat mudah jika dibandingkan bundler yang lain yang saya ketahui.
 
 Disini versi Parcel yang saya maksud adalah versi 1, karena saat posting ini ditulis Parcel v2 saya rasa masih kurang stabil dan dokumentasi-nya pun sedang dalam progress pengerjaan.
 

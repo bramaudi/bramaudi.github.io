@@ -1,7 +1,7 @@
 ---
-title: "Minimal Rating Input"
+title: "HTML Input Rating"
 date: 2021-01-28T03:10:57+07:00
-summary: "Belajar membuat input di dalam form berupa bintang untuk kebutuhan rating"
+summary: "Belajar membuat input rating dengan HTML, CSS, JS paling sederhana"
 author: "bramaudi"
 tags: [javascript, css]
 ---

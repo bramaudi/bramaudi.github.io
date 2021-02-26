@@ -1,6 +1,6 @@
 ---
 title: "Menghitung Kabisat Tidaknya Sebuah Tahun"
-date: 2020-08-09T18:12:25+07:00
+date: 2020-09-09T03:10:57+07:00
 tags: ['algoritma', 'javascript']
 author: bramaudi
 summary: "Belajar menghitung dan membuat algoritma kabisat tidaknya sebuah tahun"

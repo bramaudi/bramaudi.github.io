@@ -1,5 +1,5 @@
 ---
-title: "Membuat Media Query Reaktif Dalam Javascript Vue"
+title: "Vue: Membuat Media Query Reaktif"
 date: 2020-08-29T07:49:48+07:00
 tags: ['javascript', 'vue']
 author: bramaudi
@@ -49,7 +49,6 @@ export default {
     })
   }
 }
-
 ```
 
 Oke dengan adanya listener diatas maka state `mediaQuery` kita sudah reaktif, untuk lebih memastikan bisa lihat di Vue Devtools / langsung di hardcore di template nya xixixi.
