@@ -24,7 +24,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.645;
-  background: #222;
+  background: #11131a;
   color: #ddd;
 }
 
@@ -40,36 +40,39 @@ ol, ul {
 }
 
 header {
-  padding: 1rem;
-  display: flex;
-  align-items: center;
   border-top: .5rem solid #00a9e8;
   border-bottom: 2px dashed #00a9e8;
 }
-header > a {
+.heading {
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+.heading > a {
   text-decoration: none;
 }
-header img {
+.heading img {
   margin: -1rem .3rem -1rem 0;
   width: 2rem;
   height: 2rem;
 }
-header nav {
+.heading nav {
   margin-left: auto;
 }
-header ul {
+.heading ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-header li {
+.heading li {
   display: inline-block;
   margin: 0 .3rem;
 }
 
 main {
   padding: 1rem 0;
-  background: #333;
+  background: #1d222b;
   color: #ddd;
 }
 main.single {
@@ -90,7 +93,7 @@ main.single {
   flex-basis: 100%;
   padding: 1rem 1rem 0;
   margin: 0 1rem 1rem;
-  background: #222;
+  background: #11131a;
   color: #ddd;
   border: .1rem solid #00a9e8;
   box-shadow: .2rem .2rem 0 #39add0;
@@ -108,7 +111,7 @@ article time {
 
 article.single {
   padding: 1rem;
-  background: #222;
+  background: #11131a;
   color: #ddd;
   border: .1rem solid #00a9e8;
   box-shadow: .2rem .2rem 0 #39add0;
@@ -198,7 +201,7 @@ strong { color: #fff }
 em { color: #bbb }
 
 aside {
-  border-top: 2px dashed #222;
+  border-top: 2px dashed #11131a;
 }
 
 aside h3 {
@@ -222,7 +225,7 @@ aside ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #333;
+  background: #1d222b;
   padding: .5rem 1rem;
 }
 .pagination .pos {
@@ -235,7 +238,7 @@ aside ul {
   text-decoration: none;
   display: inline-block;
   padding: .2rem .5rem;
-  background: #222;
+  background: #11131a;
   border: .1rem solid #00a9e8;
   box-shadow: .2rem .2rem 0 #39add0;
 }
@@ -249,8 +252,9 @@ aside ul {
   margin-left: auto;
 }
 
+.scrollup::-moz-focus-outer,
 .scrollup::-moz-focus-inner {
-  border: 0;
+  outline: none;
 }
 .scrollup {
   user-select: none;
@@ -263,7 +267,6 @@ aside ul {
   background: transparent;
   border: 0;
   outline: none;
-  outline: 0;
   border-radius: 100%;
   z-index: 100;
 }
@@ -277,14 +280,14 @@ aside ul {
 .scrollup:hover .title {
   display: block;
   position: absolute;
-  left: -4.5rem;
+  left: -2rem;
   bottom: 3rem;
   font-size: small;
   font-weight: bold;
   color: #fff;
 }
 
-ul, li {
+ul {
   list-style-image: url('/assets/shuriken.png');
 }
 
@@ -300,8 +303,8 @@ ul [class*="tag-"]:hover {
   font-family: monospace;
   font-weight: bold;
   background: #5596dc;
-  border: 1px solid black;
-  color: #333;
+  border: .1rem dashed #000;
+  color: #1d222b;
 }
 [class*="tag-"]:hover {
   background: orange;
@@ -314,7 +317,7 @@ ul [class*="tag-"]:hover {
   font-weight: bold;
   font-size: small;
   background: #00a9e8;
-  color: #333;
+  color: #1d222b;
 }
 
 footer {
@@ -332,6 +335,10 @@ footer a {
 }
 
 @media screen and (min-width: 600px) {
+  .heading {
+    max-width: 800px;
+  }
+  
   .summaries article {
     flex: 1;
     flex-basis: 30%;
