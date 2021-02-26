@@ -31,12 +31,35 @@ body {
 a { color: #00a9e8; text-decoration: none; }
 a:hover, a:focus {
   text-decoration : none;
-  text-shadow: 0 0 6px #888888;
+  text-shadow: 0 0 6px #197394;
   background-image: url(/assets/lightning.gif);
 }
 
 ol, ul {
   padding: 0 1rem 0 2.5rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 2rem;
+}
+ul li::before {
+  content: url('/assets/shuriken.png');
+  margin: 0 .2rem 0 -1.5rem;
+  display: inline-flex;
+  justify-content: center;
+}
+ul li:hover::before {
+  animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 header {
@@ -69,6 +92,9 @@ header {
 .heading li {
   display: inline-block;
   margin: 0 .3rem;
+}
+.heading li::before {
+  content: none;
 }
 
 main {
@@ -114,7 +140,7 @@ article time {
 }
 .summaries article h2 a {
   text-decoration: none;
-  color: #b9d5f9;
+  color: #e8f2fd;
 }
 
 article.single {
@@ -132,6 +158,16 @@ article.single .footnotes {
 }
 article.single img {
   max-width: 50%;
+}
+
+article.single .content h1::before,
+article.single .content h2::before,
+article.single .content h3::before,
+article.single .content h4::before,
+article.single .content h5::before,
+article.single .content h6::before {
+  content: url('/assets/shuriken.png');
+  margin-right: .5rem;
 }
 
 img {
@@ -214,6 +250,7 @@ aside h3 {
   display: inline-block;
   padding: 0 .5rem;
   margin: 1rem;
+  color: #e8f2fd;
   border: .1rem solid #00a9e8;
   box-shadow: .2rem .2rem 0 #39add0;
 }
@@ -291,10 +328,6 @@ aside ul {
   font-size: small;
   font-weight: bold;
   color: #fff;
-}
-
-ul {
-  list-style-image: url('/assets/shuriken.png');
 }
 
 ul [class*="tag-"]:hover {
