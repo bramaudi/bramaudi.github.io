@@ -6,10 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	{{ partial "meta-title" . }}
 	{{ partial "meta-desc" . }}
-	<link rel="manifest" href="/manifest.webmanifest">
-	<link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="manifest" href="{{ "manifest.webmanifest" | relURL }}">
+	<link rel="icon" href="{{ "favicon.ico" | relURL }}">
+  <link rel="apple-touch-icon" href="{{ "icons/apple-touch-icon.png" | relURL }}">
 	<link rel="stylesheet" href="{{ "css/normalize.css" | relURL }}">
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 	<link rel="stylesheet" href="{{ "css/lazy-image.css" | relURL }}">
