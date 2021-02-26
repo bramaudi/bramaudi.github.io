@@ -156,12 +156,12 @@ pre {
 :not(pre) > code {
   white-space: nowrap;
   display: inline-block;
-  padding: 0 .3rem;
+  padding: 0 .4rem;
   margin: .1rem 0;
   font-size: small;
   border-radius: .3rem;
-  background: #555;
-  border: .1rem solid #aaa;
+  background: #333;
+  border: .1rem dashed #aaa;
 }
 
 hr {

@@ -2,9 +2,9 @@ baseURL = "https://bramaudi.my.id/"
 languageCode = "id-ID"
 title = "bramaudi"
 enableEmoji = true
-PygmentsCodeFences = true
-PygmentsStyle = "monokai"
-# Paginate = 2
+pygmentsUseClasses = true
+#PygmentsStyle = "api"
+#Paginate = 2
 summaryLength = 5
 
 [params]
