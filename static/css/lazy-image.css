@@ -1,0 +1,11 @@
+.lazy-image {
+  transform: translateX(50%);
+  opacity: 0;
+  transition: all .5s;
+}
+
+.fade-in {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all .5s;
+}
