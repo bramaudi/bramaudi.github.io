@@ -1,12 +1,14 @@
 {{ define "main" }}
 	<main>
-		<div class="summaries">
-			{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-			{{ range $paginator.Pages }}
-				{{ .Render "summary" }}
-			{{ end }}
+		<div class="content">
+			<div class="summaries">
+				{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+				{{ range $paginator.Pages }}
+					{{ .Render "summary" }}
+				{{ end }}
+			</div>
+			{{ partial "pagination.html" . }}
 		</div>
-		{{ partial "pagination.html" . }}
 	</main>
 {{ partial "sidebar.html" . }}
 {{ end }}

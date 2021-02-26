@@ -1,18 +1,20 @@
 {{ define "main" }}
 	<main>
-		{{ if or .Title .Content }}
-		<div class="sub">
-			{{ with .Title }}<h3>{{ . }}</h3>{{ end }}
-			{{ with .Content }}<div>{{ . }}</div>{{ end }}
-		</div>
-		{{ end }}
-
-		<div class="summaries">
-			{{ range .Paginator.Pages }}
-				{{ .Render "summary" }}
+		<div class="content">
+			{{ if or .Title .Content }}
+			<div class="sub">
+				{{ with .Title }}<h3>{{ . }}</h3>{{ end }}
+				{{ with .Content }}<div>{{ . }}</div>{{ end }}
+			</div>
 			{{ end }}
+	
+			<div class="summaries">
+				{{ range .Paginator.Pages }}
+					{{ .Render "summary" }}
+				{{ end }}
+			</div>
+			{{ partial "pagination.html" . }}
 		</div>
-		{{ partial "pagination.html" . }}
 	</main>
 {{ partial "sidebar.html" . }}
 {{ end }}
