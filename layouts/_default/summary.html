@@ -1,6 +1,6 @@
 <article>
 	<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-	<time>{{ .Date.Format "Monday, Jan 2006" }}</time>
+	<time>{{ index $.Site.Data.hari (printf "%d" .Date.Weekday) }}, {{ .Date.Format "2" }} {{ index $.Site.Data.bulan (printf "%d" .Date.Month) }} {{ .Date.Format "2006" }}</time>
 	<div class="tags">
 		{{ range .Params.tags }}
 		<a class="tag-{{ . }}" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>

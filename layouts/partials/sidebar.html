@@ -1,21 +1,21 @@
 <aside>
 	<div class="segments">
 		<div class="segment">
-			<h3>Latest Posts</h3>
+			<h3>Posting Terkini</h3>
 			<ul>
-				{{ range first 25 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+				{{ range first 10 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 				<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
 				{{ end }}
 			</ul>
 		</div>
 	
 		<div class="segment">
-			<h3>Tags</h3>
+			<h3>Label</h3>
 			<ul>
 				{{range $name, $taxonomy := .Site.Taxonomies.tags}} {{ $cnt := .Count }}
 				{{ with $.Site.GetPage (printf "/tags/%s" $name) }}
 				<li>
-					<a class="tag-{{$name}}" href={{ .RelPermalink }} title='All pages with tag "{{$name}}"'>
+					<a class="tag-{{$name}}" href={{ .RelPermalink }} title='Telusuri label "{{$name}}"'>
 						{{$name}}
 					</a>
 					<span class="tag count">{{$cnt}}</span>

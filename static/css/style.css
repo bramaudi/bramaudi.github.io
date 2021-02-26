@@ -316,6 +316,7 @@ ul [class*="tag-"]:hover {
   background: orange;
   background-image: url(/assets/fire.gif) !important;
   background-position: bottom;
+  color: black;
 }
 .tag-javascript {
   background: yellow;

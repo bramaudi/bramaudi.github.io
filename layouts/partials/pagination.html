@@ -1,15 +1,15 @@
 <div class="pagination">
 	<div class="prev">
 		{{ if .Paginator.HasPrev }}
-			<a href="{{ .Paginator.Prev.URL }}">&laquo; Prev</a>
+			<a href="{{ .Paginator.Prev.URL }}">&laquo; Sebelumnya</a>
 		{{ end }}
 	</div>
 	<div class="pos">
-		{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}
+		{{ .Paginator.PageNumber }} dari {{ .Paginator.TotalPages }}
 	</div>
 	<div class="next">
 		{{ if .Paginator.HasNext }}
-			<a href="{{ .Paginator.Next.URL }}">Next &raquo;</a>
+			<a href="{{ .Paginator.Next.URL }}">Selanjutnya &raquo;</a>
 		{{ end }}
 	</div>
 </div>
