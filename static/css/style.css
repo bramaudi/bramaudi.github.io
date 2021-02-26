@@ -82,11 +82,11 @@ header {
   height: 2rem;
   z-index: 2;
   border-radius: 100%;
-  transition: all 1s;
+  transition: all .5s;
   border: .1rem solid #00a9e8;
 }
 .heading img:hover {
-  transition: all 1s;
+  transition: all .5s;
   transform: scale(1.5);
 }
 .heading img ~ a::before {
@@ -177,6 +177,10 @@ article.single h1 {
 }
 article.single .footnotes {
   margin: 1rem -1rem -.5rem;
+}
+article.single .footnotes hr {
+  border: none;
+  border-top: .1rem dotted #00a9e8;
 }
 article.single img {
   max-width: 50%;
