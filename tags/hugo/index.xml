@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/hugo/</link>
+    <description>Recent content in Hugo on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Sat, 27 Feb 2021 18:29:57 +0700</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Konfigurasi Hugo &#43; Github Pages &#43; CircleCI</title>
+      <link>https://bramaudi.my.id/post/2021/cd-circleci-ghpages-hugo/</link>
+      <pubDate>Sat, 27 Feb 2021 18:29:57 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2021/cd-circleci-ghpages-hugo/</guid>
+      <description>Hugo adalah Static Site Generator (SSG) yang dibuat dengan bahasa pemrograman Go-lang sehingga Hugo bisa menjadi SSG dengan kecepatan build yang super cepat, karena dalam aspek SSG kecepatan build adalah hal yang sangat penting untuk dipertimbangkan mencakup setiap dokumen, artikel, atau beberapa jenis konten lain akan di build satu-per-satu sehingga menjadi bentuk website penuh yang utuh.</description>
+    </item>
+    
+  </channel>
+</rss>
