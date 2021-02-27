@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Vue: Membuat Media Query Reaktif</title>
+<meta property="og:title" content="Vue: Membuat Media Query Reaktif" />
+<meta name="twitter:title" content="Vue: Membuat Media Query Reaktif" />
+<meta itemprop="name" content="Vue: Membuat Media Query Reaktif" />
+<meta name="application-name" content="Vue: Membuat Media Query Reaktif" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Belajar cara menerapkan media query yang reaktif pada sisi Javascript di framework Vue" />
+<meta itemprop="description" content="Belajar cara menerapkan media query yang reaktif pada sisi Javascript di framework Vue" />
+<meta property="og:description" content="Belajar cara menerapkan media query yang reaktif pada sisi Javascript di framework Vue" />
+<meta name="twitter:description" content="Belajar cara menerapkan media query yang reaktif pada sisi Javascript di framework Vue" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Vue: Membuat Media Query Reaktif</h1>
+			<time>Sabtu, 29 Agustus 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-javascript" href="/tags/javascript">javascript</a>
+				
+				<a class="tag-vue" href="/tags/vue">vue</a>
+				
+			
+			</div>
+			<div class="content">
+				<p><strong>Media Query</strong> biasanya kita gunakan saat ingin membuat sebuah tampilan desain yang responsif melalui css, ini diperlukan agar bisa mengatur perbedaan tampilan untuk setiap resolusi layar.</p>
+
+<p>Namun kita juga bisa menggunakan media query pada javascript, untuk contoh native nya bisa seperti ini:</p>
+
+<pre><code class="language-js">var mq = window.matchMedia('(min-width: 1080px)');
+
+if (mq.matches) {
+    // window width &gt;= 1080px
+}
+</code></pre>
+
+<p>Nah bagaimana kalau kita ingin menggunakan teknik ini dalam framework Vue? Tentu dengan kode diatas maka kita tidak akan mendapatkan fungsi yang reaktif karena dengan kode seperti itu hanya akan dijalankan saat web pertama kali render saja kemudian setelah kita resize window maka tampilan tidak akan berubah.</p>
+
+<p>Untuk itu kita akan membuat fungsi media query yang benar-benar reaktif didalam Vue JS menggunakan API <code>onresize</code> dan juga <code>window.innerWidth</code> untuk value dari media query itu sendiri.</p>
+
+<p>Pertama buat inisiasi state dengan <code>window.innerWidth</code> tadi sebagai value-nya, seperti ini:</p>
+
+<pre><code class="language-js">export default {
+  data () {
+    return {
+      mediaQuery: window.innerWidth
+    }
+  }
+}
+</code></pre>
+
+<p>Kemudian tambahkan sebuah event listener pada <code>window</code> untuk event <code>onresize</code> pada fungsi lifecycle vue yaitu <code>created</code>, ini bermaksud agar kode tersebut agar dijalankan pertama kali sebelum semua component vue termasuk <strong>App.vue</strong>.</p>
+
+<pre><code class="language-js">export default {
+  data () {
+    return {
+      mediaQuery: window.innerWidth
+    }
+  },
+  created () {
+    window.addEventListener('resize'. () =&gt; {
+      this.mediaQuery = window.innerWidth
+    })
+  }
+}
+</code></pre>
+
+<p>Oke dengan adanya listener diatas maka state <code>mediaQuery</code> kita sudah reaktif, untuk lebih memastikan bisa lihat di Vue Devtools / langsung di hardcore di template nya xixixi.</p>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

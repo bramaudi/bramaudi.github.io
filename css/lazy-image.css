@@ -1,0 +1,14 @@
+.lazy-image {
+  transform: translateX(50%);
+  opacity: 0;
+  transition: all .5s;
+  
+  border: .1rem solid #00a9e8;
+  box-shadow: .2rem .2rem 0 #39add0;
+}
+
+.fade-in {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all .5s;
+}

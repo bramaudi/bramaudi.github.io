@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Parcel &#43; Tailwind = 😎</title>
+<meta property="og:title" content="Parcel &#43; Tailwind = 😎" />
+<meta name="twitter:title" content="Parcel &#43; Tailwind = 😎" />
+<meta itemprop="name" content="Parcel &#43; Tailwind = 😎" />
+<meta name="application-name" content="Parcel &#43; Tailwind = 😎" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Menambahkan TailwindCSS v2 pada Parcel bundler v1" />
+<meta itemprop="description" content="Menambahkan TailwindCSS v2 pada Parcel bundler v1" />
+<meta property="og:description" content="Menambahkan TailwindCSS v2 pada Parcel bundler v1" />
+<meta name="twitter:description" content="Menambahkan TailwindCSS v2 pada Parcel bundler v1" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Parcel &#43; Tailwind = 😎</h1>
+			<time>Kamis, 14 Januari 2021</time>
+			<div class="tags">
+			
+				
+				<a class="tag-nodejs" href="/tags/nodejs">nodejs</a>
+				
+				<a class="tag-javascript" href="/tags/javascript">javascript</a>
+				
+				<a class="tag-css" href="/tags/css">css</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<p><a href="https://parceljs.org/">ParcelJS</a> adalah bundler yang cukup favorit bagi saya, ciri khas dari bundler yang satu ini adalah kelebihannya dalam kemudahan meng-konfigurasi yang sangat mudah jika dibandingkan bundler yang lain yang saya ketahui.</p>
+
+<p>Disini versi Parcel yang saya maksud adalah versi 1, karena saat posting ini ditulis Parcel v2 saya rasa masih kurang stabil dan dokumentasi-nya pun sedang dalam progress pengerjaan.</p>
+
+<p>Jika sobat tidak ingin menghabiskan banyak waktu saya juga telah membuat sebuah repository untuk ini <a href="https://gitlab.com/bramaudi/parcel-tailwind">disini</a>.</p>
+
+<h2 id="installasi-parceljs">Installasi ParcelJS</h2>
+
+<p>Okey mari kita mulai dengan menginstall ParcelJS, kita perlu menginstall modul postcss juga agar Parcel nantinya dapat membaca file Tailwind yang ber-format postcss.</p>
+
+<pre><code class="language-bash"># Install parcel beserta module
+npm i -D parcel-bundler postcss-modules
+</code></pre>
+
+<h2 id="instalasi-tailwind">Instalasi Tailwind</h2>
+
+<p>Tailwind v2 membutuhkan dependensi preprocessor PostCSS v8, dalam dokumentasi dijelaskan bahwa beberapa aplikasi / framework mungkin masih belum mendukung PostCSS v8 dan harus menginstall Tailwind v2 namun dengan versi yang kompatibel dengan PostCSS v7.</p>
+
+<p>Singkat-nya sobat tidak usah bingung karena untuk Parcel bundler kita cukup downgrade dependensi <strong>autoprefixer</strong> saja ke <strong>v9</strong> dan selebih-nya adalah versi terbaru.</p>
+
+<pre><code class="language-bash">npm i tailwindcss postcss autoprefixer@^9
+</code></pre>
+
+<h2 id="konfigurasi-tailwind-postcss">Konfigurasi Tailwind &amp; PostCSS</h2>
+
+<p>Didalam folder utama projek, kita buat file konfigurasi yang di perlukan Tailwind dengan menggunakan perintah berikut:</p>
+
+<pre><code class="language-bash">npx tailwindcss init
+</code></pre>
+
+<p>lalu ubah bagian <code>purge</code> agar nanti-nya dapat memangkas class CSS yang tidak diperlukan, ubah menjadi seperti berikut:</p>
+
+<pre><code class="language-diff">- purge: [],
++ purge: {
++    enabled: true,
++    content: ['./src/**/*.html']
++  },
+</code></pre>
+
+<p>bagian konten bisa kita sesuaikan format-nya, bebas misal-nya saja <em>.php</em>, <em>.js</em> atau <em>.jsx</em>, <em>.svelte</em>, dan lain-lain.</p>
+
+<p>Kemudian selanjutnya adalah membuat file <code>postcss.config.js</code>:</p>
+
+<pre><code class="language-js">// postcss.config.js
+module.exports = {
+  plugins: [
+    require('tailwindcss')('./tailwind.config.js'),
+    require('autoprefixer'),
+  ]
+}
+</code></pre>
+
+<p><strong>Penting</strong>, kita harus memuat manual file konfigurasi Tailwind (tailwind.config.js) pada konfigurasi postcss secara eksplisit persis seperti pada contoh diatas karena jika hanya..</p>
+
+<pre><code class="language-js">require('tailwindcss')
+</code></pre>
+
+<p>..maka akan terjadi error, entah karena apa penyebab-nya masih belum saya ketahui.</p>
+
+<h2 id="import-tailwind">Import Tailwind</h2>
+
+<p>Untuk bisa menjalankan tailwind pertama kita perlu impor dulu style yang berisi fondasi, biasanya saya mengimpor pada file entrypoint utama seperti <em>index.js</em>, <em>main.js</em>, atau <em>App.js</em> tergantung nama masing-masing dalam projek sobat.</p>
+
+<pre><code class="language-js">import './styles.pcss'
+</code></pre>
+
+<p>Kemudian sesuai dengan dokumentasi kita isi file <code>styles.pcss</code> dengan kode berikut:</p>
+
+<pre><code class="language-css">@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</code></pre>
+
+<p>Tailwind sudah siap digunakan, dan sudah otomatis akan membuang class yang tidak dibutuhkan untuk mendapatkan output css yang ramping.</p>
+
+<p>Untuk contoh lebih lengkap saya bisa sobat lihat repository yang telah saya buat beserta demo-nya:</p>
+
+<p>Repository: <a href="https://gitlab.com/bramaudi/parcel-tailwind">https://gitlab.com/bramaudi/parcel-tailwind</a></p>
+
+<p>Demo: <a href="https://bramaudi.gitlab.io/parcel-tailwind/">https://bramaudi.gitlab.io/parcel-tailwind/</a></p>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

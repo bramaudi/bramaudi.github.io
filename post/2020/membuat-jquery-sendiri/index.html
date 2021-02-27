@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Membuat JQuery Sendiri</title>
+<meta property="og:title" content="Membuat JQuery Sendiri" />
+<meta name="twitter:title" content="Membuat JQuery Sendiri" />
+<meta itemprop="name" content="Membuat JQuery Sendiri" />
+<meta name="application-name" content="Membuat JQuery Sendiri" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Belajar membuat library JQuery versi kamu sendiri dengan menggunakan native javascript API terkini, ternyata se-sederhana ini." />
+<meta itemprop="description" content="Belajar membuat library JQuery versi kamu sendiri dengan menggunakan native javascript API terkini, ternyata se-sederhana ini." />
+<meta property="og:description" content="Belajar membuat library JQuery versi kamu sendiri dengan menggunakan native javascript API terkini, ternyata se-sederhana ini." />
+<meta name="twitter:description" content="Belajar membuat library JQuery versi kamu sendiri dengan menggunakan native javascript API terkini, ternyata se-sederhana ini." />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Membuat JQuery Sendiri</h1>
+			<time>Kamis, 30 April 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-javascript" href="/tags/javascript">javascript</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<p>jQuery adalah library javascript yang mungkin sangat populer di era nya, mungkin popularitas nya seperti pengguna css bootstrap, bahkan dulu semasa saya masih belajar javascript ini setiap saya stuck dan mencoba mencari solusi di internet yang ada malah dikasih javascript berupa syntax jQuery, karena saking populernya.</p>
+
+<p>Namun seiring perkembangan API native dari javascript itu sendiri membuat kita tidak harusnya sudah tidak lagi menggunakan jQuery, kenapa? hmm sepertinya agar lebih mudah biarkan kode yang berbicara, jadi topik artikel ini adalah pembahasan tentang bagaimana kita bisa membuat library jQuery milik kita sendiri.</p>
+
+<h2 id="selector">Selector</h2>
+
+<p>Alasan utama saya dulu menggunakan javascript hanya karena suka dengan sistem selektor nya saja, hanya dengan pola <code>$(query)</code> saya bisa dengan mudah untuk memanipulasi DOM untuk keperluan user interface.</p>
+
+<p>Namun saat ini sudah ada API javascript native yang fungsinya sama dengan Selector kepunyaan jQuery tadi yaitu <code>querySelector</code> dan <code>querySelectorAll</code> , dengan ini saya bisa membuat selektor jQuery hanya dengan 1 baris kode seperti ini;</p>
+
+<pre><code class="language-js">const $ = (query) =&gt; document.querySelectorAll(query)
+</code></pre>
+
+<p>dan bekerja dengan baik seperti jQuery.</p>
+
+<h2 id="fungsi-tambahan">Fungsi Tambahan</h2>
+
+<p>Lalu bagaimana dengan fungsi² lainnya semisal <code>hide()</code>, <code>addClass()</code>, <code>removeClass()</code> dan seterusnya &hellip; ? Kita bisa mengembangkan 1 baris kode sebelumnya menjadi seperti ini;</p>
+
+<pre><code class="language-js">const $ = (query) =&gt; {
+  const el = document.querySelectorAll(query)
+  return {
+    hide: () =&gt; el[0].style.display = 'none',
+    addClass: (v) =&gt; el[0].classList.add(v),
+    removeClass: (v) =&gt; el[0].classList.remove(v)
+    // Dan seterusnya ...
+  }
+}
+</code></pre>
+
+<p>Dan untuk penggunaan kode diatas juga sama seperti jQuery, misal;</p>
+
+<pre><code class="language-js">$('.modal').addClass('active')
+</code></pre>
+
+<p>Untuk fungsi kode diatas kita hanya bisa memanipulasi satu buah DOM saja, jadi misal kita ingin memodifikasi beberapa elemen dengan <code>class</code> yang sama maka hanya elemen pertama-lah yang akan berubah, untuk itu kita masih harus mengembangkan lagi ke tahap selanjutnya.</p>
+
+<h2 id="ekstensi-dengan-class">Ekstensi Dengan Class</h2>
+
+<p>Yah, masih kurang pas rasanya saat saya memakai kode diatas, masih sangat sederhana dan kurang memenuhi kebutuhan, mari kita sempurna kan dengan membungkus nya dengan menggunakan javascript <code>class</code>, saya mencoba mengembangkan lagi kode sebelumnya agar semirip mungkin dengan jQuery.</p>
+
+<p>Kelemahan / kekurangan kode sebelumnya:</p>
+
+<ul>
+<li>Hanya mampu memanipulasi satu DOM saja, jadi saya tidak bisa membuat modifikasi properti pada beberapa elemen dengan atribut class yang sama.</li>
+<li>Fungsinya sangat terbatas, saya harus membuat ulang jika ingin menambah fitur karena kita tidak bisa menggunakan fungsi bawaan.</li>
+<li>Karena nilai <code>return</code> berupa objek yang berisi fungsi² maka jika kita log di konsol hasilnya akan membludak dan menampilkan seluruh isi fungsi, tidak bisa menampilkan hasil node / elemen hasil query-nya saja seperti jquery.</li>
+</ul>
+
+<p>Nah saya berhasil mengatasi semua masalah diatas dengan membuatnya menjadi class dan memasukkan fitur / fungsi yang kita inginkan dengan tetap bisa menampilkan hasil selektor dan poin lebihnya kita juga bisa melakukan pemanggilan fungsi secara berantai.</p>
+
+<p>Pertama buat class-nya, buat dengan nama bebas untuk contoh disini saya beri nama class <code>X</code> agar tidak terlalu panjang;</p>
+
+<pre><code class="language-js">class X {
+  // fungsi konstruktor bawaan
+  constructor(q) {
+    const el = document.querySelectorAll(q)
+    // tambahkan properti untuk setiap node hasil query
+    el.forEach((node, key) =&gt; this[key] = node)
+    // tambahkan properti &quot;length&quot; yang berisi jumlah node yang ditemukan
+    this.length = el.length
+  }
+
+  // custom function untuk &quot;tambah class&quot;
+  addClass(v) {
+    for (let i = 0; i &lt; this.length; i++) {
+      this[i].classList.add(v)
+    }
+    return this
+  }
+
+  // custom function untuk &quot;manipulasi text konten&quot;
+  text(v) {
+    let texts = []
+    for (let i = 0; i &lt; this.length; i++) {
+      v ? this[i].innerText = v : texts.push(this[i].innerText)
+    }
+    return v ? this : texts
+  }
+}
+</code></pre>
+
+<p>Lalu gunakan <code>class</code> diatas untuk membuat fungsi selektor dengan menggunakan simbol dollar sebagai namanya;</p>
+
+<pre><code class="language-js">const $ = (q) =&gt; new X(q)
+</code></pre>
+
+<p>Oke library kecil kita sudah siap bertugas, untuk contoh saya buat kasus dimana saya punya beberapa elemen <code>div</code> dan saya akan merubah semua warna font dari elemen <code>div</code> menjadi merah dengan menambahkan class <code>red</code> dan mengembalikan nilai dengan text didalamnya (<code>innerText</code>) maka kodenya akan terlihat seperti ini;</p>
+
+<pre><code class="language-js">const ubah = $('div').addClass('red').text()
+console.log(ubah)
+</code></pre>
+
+<p>Dari contoh kasus dan kode <code>class</code> diatas saya bisa mengubah / mengambil text didalam elemen dengan menggunakan fungsi <code>text(string)</code>, nilai <code>string</code> adalah opsional dimana jika kosong maka return adalah text konten yang ada saat ini.</p>
+
+<p>Pastikan untuk menambah <code>return this</code> pada setiap fungsi yang akan ditambahkan untuk penggunaan fungsi berantai.</p>
+
+<p>Bagaimana? sudah mirip dengan jQuery apa belum, bisa saya katakan ini bukan mirip tapi memang kurang lebih sudah sama. Semoga bermanfaat.</p>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

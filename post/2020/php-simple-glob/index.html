@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">PHP: Glob</title>
+<meta property="og:title" content="PHP: Glob" />
+<meta name="twitter:title" content="PHP: Glob" />
+<meta itemprop="name" content="PHP: Glob" />
+<meta name="application-name" content="PHP: Glob" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Implementasi sederhana dari glob untuk menampilkan daftar filesystem pada suatu direktori &#43; latihan membuat webshare sederhana dengan PHP." />
+<meta itemprop="description" content="Implementasi sederhana dari glob untuk menampilkan daftar filesystem pada suatu direktori &#43; latihan membuat webshare sederhana dengan PHP." />
+<meta property="og:description" content="Implementasi sederhana dari glob untuk menampilkan daftar filesystem pada suatu direktori &#43; latihan membuat webshare sederhana dengan PHP." />
+<meta name="twitter:description" content="Implementasi sederhana dari glob untuk menampilkan daftar filesystem pada suatu direktori &#43; latihan membuat webshare sederhana dengan PHP." />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>PHP: Glob</h1>
+			<time>Senin, 4 Mei 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-php" href="/tags/php">php</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<h2 id="apa-itu-glob">Apa itu glob?</h2>
+
+<p><strong>Glob</strong> digunakan untuk dirlisting / menampilkan isi konten suatu direktori. Contoh sederhana adalah ketika saya ingin membuat file sharing menggunakan web (webshare), saya cukup menggunakan fungsi <code>glob</code> ini dan server bawaan php.</p>
+
+<p>Syntax:</p>
+
+<pre><code class="language-php">glob ( string $pattern [, int $flags = 0 ] ) : array
+</code></pre>
+
+<p>Misalkan disini saya mempunyai sebuah folder bernama <code>Brem</code> dan berisi beberapa file berikut;</p>
+
+<pre><code class="language-bash">├── archive.zip
+├── cat.jpg
+├── doc-2.txt
+├── doc.txt
+├── flying-bird.gif
+└── images.jpg
+</code></pre>
+
+<p>Untuk lebih mudah dalam memahami yuk langsung simak contoh - contoh yang telah saya buat berikut;</p>
+
+<h2 id="contoh">Contoh</h2>
+
+<h4 id="1-menampilkan-semuanya">#1 Menampilkan Semuanya</h4>
+
+<p>Kode:</p>
+
+<pre><code class="language-php">print_r(glob('*.*'));
+</code></pre>
+
+<p>Hasil:</p>
+
+<pre><code class="language-bash">Array
+(
+    [0] =&gt; archive.zip
+    [1] =&gt; cat.jpg
+    [2] =&gt; doc-2.txt
+    [3] =&gt; doc.txt
+    [4] =&gt; flying-bird.gif
+    [5] =&gt; images.jpg
+)
+</code></pre>
+
+<h4 id="2-menampilkan-semuanya-dengan-prefix-path">#2 Menampilkan Semuanya dengan Prefix Path</h4>
+
+<p>Kode:</p>
+
+<pre><code class="language-php">print_r(glob('./*'));
+</code></pre>
+
+<p>Hasil:</p>
+
+<pre><code class="language-bash">Array
+(
+    [0] =&gt; ./archive.zip
+    [1] =&gt; ./cat.jpg
+    [2] =&gt; ./doc-2.txt
+    [3] =&gt; ./doc.txt
+    [4] =&gt; ./flying-bird.gif
+    [5] =&gt; ./images.jpg
+)
+</code></pre>
+
+<h4 id="3-menampilkan-format-tertentu">#3 Menampilkan Format Tertentu</h4>
+
+<p>Kode:</p>
+
+<pre><code class="language-php">print_r(glob('*.txt'));
+</code></pre>
+
+<p>Hasil:</p>
+
+<pre><code class="language-bash">Array
+(
+    [0] =&gt; doc-2.txt
+    [1] =&gt; doc.txt
+)
+</code></pre>
+
+<h4 id="4-menampilkan-beberapa-format-sekaligus">#4 Menampilkan Beberapa Format Sekaligus</h4>
+
+<p>Untuk beberapa kasus kita pasti akan membutuhkan parameter kedua dari fungsi glob, misalnya saja untuk kasus seperti menampilkan beberapa format ini kita perlu menggunakan <code>GLOB_BRACE</code>.</p>
+
+<p>Kode:</p>
+
+<pre><code class="language-php">print_r(glob('*.{jpg,gif}', GLOB_BRACE));
+</code></pre>
+
+<p>Hasil:</p>
+
+<pre><code class="language-bash">Array
+(
+    [0] =&gt; cat.jpg
+    [1] =&gt; images.jpg
+    [2] =&gt; flying-bird.gif
+)
+</code></pre>
+
+<hr />
+
+<h3 id="latihan-membuat-webshare-sederhana">Latihan Membuat Webshare Sederhana</h3>
+
+<p>Pertama saya membuat file <code>index.php</code> didalam folder yang ingin saya share yang berisi script berikut;</p>
+
+<pre><code class="language-php">&lt;?php
+
+$files = glob('./*');
+
+foreach ($files as $file) {
+  echo '&lt;li&gt;&lt;a href=&quot;'.$file.'&quot;&gt;'.$file.'&lt;/a&gt;&lt;/li&gt;';
+}
+</code></pre>
+
+<p>setelah itu saya tinggal membuat koneksi web server bawaan php, dengan langkah - langkah sebagai berikut;</p>
+
+<ol>
+<li>Buka <code>terminal</code></li>
+<li>Ketik perinah <code>php -S &lt;host&gt;:&lt;port&gt;</code></li>
+<li>Sambungkan ke local network tersebut melalui browser dan saya sudah siap berbagi file.</li>
+</ol>
+
+<p>Untuk contoh penggunaan perintah php server secara nyata adalah seperti berikut;</p>
+
+<pre><code class="language-bash">php -S localhost:8080 # hasil url 127.0.0.1:8080
+php -S 0:8080 # hasil url 0.0.0.0:8080
+php -S 0:8080 -t public/ # hasil url 0.0.0.0:8080 - folder public/ sebagai tujuan
+</code></pre>
+
+<p>Ok, semoga bermanfaat.</p>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">CodeIgniter4: Menambahkan Frontend SPA</title>
+<meta property="og:title" content="CodeIgniter4: Menambahkan Frontend SPA" />
+<meta name="twitter:title" content="CodeIgniter4: Menambahkan Frontend SPA" />
+<meta itemprop="name" content="CodeIgniter4: Menambahkan Frontend SPA" />
+<meta name="application-name" content="CodeIgniter4: Menambahkan Frontend SPA" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Membuat frontend berupa Single Page Application dalam project CI4" />
+<meta itemprop="description" content="Membuat frontend berupa Single Page Application dalam project CI4" />
+<meta property="og:description" content="Membuat frontend berupa Single Page Application dalam project CI4" />
+<meta name="twitter:description" content="Membuat frontend berupa Single Page Application dalam project CI4" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>CodeIgniter4: Menambahkan Frontend SPA</h1>
+			<time>Rabu, 13 Januari 2021</time>
+			<div class="tags">
+			
+				
+				<a class="tag-php" href="/tags/php">php</a>
+				
+				<a class="tag-javascript" href="/tags/javascript">javascript</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<p>Dalam membuat frontend yang modern dan interaktif tentu kita harus berkerja menggunakan javascript, dengan CI4 kita hanya bisa membuat tampilan yang kurang interaktif karena mengandalkan php yang notabene adalah bahasa server-side, hanya memproses data lalu menampilkan dokumen halaman kepada browser, kita masih perlu menulis beberapa kode javascript untuk membuat interaksi antar muka yang interaktif, semisal popup, sidebar, dll.</p>
+
+<p>Solusi lain adalah dengan membuat project terpisah khusus untuk frontend-nya. Namun jika sobat tidak ingin demikian maka silahkan simak tutorial ini.</p>
+
+<h2 id="1-init-npm">1. Init NPM</h2>
+
+<p>Saya asumsikan sobat telah menginstall nodejs.</p>
+
+<pre><code class="language-bash">cd project # folder project CI
+npm init -y
+</code></pre>
+
+<p>Kemudian lanjut dengan instalasi bundler, disini saya menggunakan <a href="https://parceljs.org/">parcel</a> sebagai bundler, kenapa? berikut kelebihannya:</p>
+
+<ul>
+<li>Cukup cepat</li>
+<li>Zero configuration</li>
+<li>Auto polyfill<sup class="footnote-ref" id="fnref:polyfill"><a href="#fn:polyfill">1</a></sup></li>
+</ul>
+
+<pre><code class="language-bash">npm i -D parcel-bundler
+</code></pre>
+
+<p>Setelah itu baru kita install framework javascript-nya. Sebagai contoh disini saya memilih <a href="https://preactjs.com/">preact</a> untuk framework-nya.</p>
+
+<pre><code class="language-bash">npm i preact preact-router
+</code></pre>
+
+<p>Oh iya, karena nantinya kita perlu menulis menggunakan JSX<sup class="footnote-ref" id="fnref:jsx"><a href="#fn:jsx">2</a></sup> maka kita juga butuh beberapa dependensi berikut:</p>
+
+<pre><code class="language-bash">npm i -D @babel/core @babel/plugin-transform-react-jsx
+</code></pre>
+
+<h2 id="membuat-struktur">Membuat Struktur</h2>
+
+<p>Oke, mari kita membuat struktur direktori, pertama buat folder khusus yang nantinya akan berisi semua file2 frontend dan folder inilah yang akan menjadi working dir kita nantinya, bisa dengan menggunakan nama apapun, disini misal saya menggunakan nama <code>client</code>:</p>
+
+<pre><code class="language-bash">mkdir client
+touch index.jsx
+</code></pre>
+
+<p>File <code>index.jsx</code> adalah endpoint awal untuk frontend kita, isi dengan kode berikut:</p>
+
+<pre><code class="language-jsx">// client/index.jsx
+import { h, Fragment, render } from 'preact'
+import Router from 'preact-router'
+import Home from './pages/home.jsx'
+import About from './pages/about.jsx'
+
+const App = () =&gt; {
+  return (
+    &lt;Router&gt;
+      &lt;Home path=&quot;/&quot; /&gt;
+      &lt;About path=&quot;/about&quot; /&gt;
+    &lt;/Router&gt;
+  )
+}
+
+render(&lt;App /&gt;, document.getElementById('app'))
+</code></pre>
+
+<p>Selanjutnya kita akan membuat halaman <strong>Home</strong> dan <strong>About</strong>:</p>
+
+<pre><code class="language-bash">mkdir pages
+touch pages/home.jsx
+touch pages/about.jsx
+</code></pre>
+
+<p>Lalu isi file <code>home.jsx</code> dengan kode berikut:</p>
+
+<pre><code class="language-jsx">// client/pages/home.jsx
+import { h, Fragment } from 'preact'
+
+const Home = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;h1&gt;Home&lt;/h1&gt;
+      &lt;p&gt;Welcome to home.jsx&lt;/p&gt;
+      &lt;a href=&quot;/about&quot;&gt;Go to About &amp;raquo;&lt;/a&gt;
+    &lt;/&gt;
+  )
+}
+
+export default Home
+</code></pre>
+
+<p>Sedangkan untuk <code>about.jsx</code>:</p>
+
+<pre><code class="language-jsx">// client/pages/about.jsx
+import { h, Fragment } from 'preact'
+
+const About = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;h1&gt;About&lt;/h1&gt;
+      &lt;p&gt;This is about.jsx page&lt;/p&gt;
+      &lt;a href=&quot;/&quot;&gt;&amp;laquo; Back to Home&lt;/a&gt;
+    &lt;/&gt;
+  )
+}
+
+export default About
+</code></pre>
+
+<h2 id="3-atur-router-codeigniter">3. Atur Router Codeigniter</h2>
+
+<p>Meski bagian SPA sudah selesai namun kita masih perlu mengatur routing pada bagian Codeigniter agar tetap menjalankan satu <code>views</code> meski URL apapun itu yang diakses.</p>
+
+<p>Tambahkan kode berikut pada file <code>app/Config/Routes.php</code>:</p>
+
+<pre><code class="language-php">$routes-&gt;get('/(:any)', 'Home::index');
+</code></pre>
+
+<p>Setelah itu kita ubah views <code>app/Views/welcome_message.php</code> menjadi seperti ini:</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Project SPA&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+  &lt;script src=&quot;&lt;?=site_url()?&gt;/dist/index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="4-penutup">4. Penutup</h2>
+
+<p>Untuk bisa menerjemahkan JSX dengan benar kita perlu memberi tahu bundler fungsi mana yang digunakan, cara nya buat file <code>.babelrc</code> tepat didalam root Codeigniter:</p>
+
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    [
+      &quot;@babel/plugin-transform-react-jsx&quot;,
+      {&quot;pragma&quot;: &quot;h&quot;, &quot;pragmaFrag&quot;: &quot;Fragment&quot;}
+    ]
+  ]
+}
+</code></pre>
+
+<p>Tambahkan juga folder <code>.cache</code> dan <code>node_modules</code> kedalam blacklist git agar tidak ikut masuk kedalam repository, dengan menambahkan beberapa baris berikut pada file <code>.gitignore</code> dibagian terakhir:</p>
+
+<pre><code class="language-bash">node_modules/
+.cache
+</code></pre>
+
+<p>Tidak lupa pula kita juga akan menulis perintah untuk pengembangan dan build production, pada <code>package.json</code> ubah bagian &ldquo;scripts&rdquo; menjadi berikut:</p>
+
+<pre><code class="language-bash">&quot;scripts&quot;: {
+  &quot;dev&quot;: &quot;parcel watch client/index.jsx -d public/dist&quot;,
+  &quot;build&quot;: &quot;parcel build client/index.jsx -d public/dist --no-source-maps&quot;
+},
+</code></pre>
+
+<p>Selesai, perintah <code>dev</code> dan <code>build</code> diatas fungsi nya adalah untuk mem-&ldquo;proses&rdquo; apa yang ada pada folder <code>client</code> dan mengirim hasil olahan ke folder <code>public/dist</code>.</p>
+
+<p>Gunakan perintah <code>npm run dev</code> untuk membuat <strong>parcel</strong> mengawasi perubahan dan <code>npm run build</code> untuk membangun output javascript yang sudah di optimalkan khusus untuk rilis produksi.</p>
+
+<p>Dari sini sisa-nya kita tinggal fokus untuk membuat Endpoint API saja, semoga bermanfaat.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:polyfill">Menerjemahkan kode modern yang awalnya tidak didukung agar dapat tetap berjalan pada peramban lama.
+ <a class="footnote-return" href="#fnref:polyfill"><sup>[return]</sup></a></li>
+<li id="fn:jsx"><strong>JSX</strong> adalah kepanjangan dari Javascript XML, kita bisa menulis kode HTML didalam Javascript demi mempermudah penggunaan fungsi DOM.
+ <a class="footnote-return" href="#fnref:jsx"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

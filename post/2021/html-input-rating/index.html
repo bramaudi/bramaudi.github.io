@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">HTML Input Rating</title>
+<meta property="og:title" content="HTML Input Rating" />
+<meta name="twitter:title" content="HTML Input Rating" />
+<meta itemprop="name" content="HTML Input Rating" />
+<meta name="application-name" content="HTML Input Rating" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Belajar membuat input rating dengan HTML, CSS, JS paling sederhana" />
+<meta itemprop="description" content="Belajar membuat input rating dengan HTML, CSS, JS paling sederhana" />
+<meta property="og:description" content="Belajar membuat input rating dengan HTML, CSS, JS paling sederhana" />
+<meta name="twitter:description" content="Belajar membuat input rating dengan HTML, CSS, JS paling sederhana" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>HTML Input Rating</h1>
+			<time>Kamis, 28 Januari 2021</time>
+			<div class="tags">
+			
+				
+				<a class="tag-javascript" href="/tags/javascript">javascript</a>
+				
+				<a class="tag-css" href="/tags/css">css</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<p>Baru-baru ini saya mendapat project yang mana membutuhkan fitur rating, beruntung saya menemukan artikel &ldquo;<a href="https://css-tricks.com/star-ratings/">Star Rating With Very Little CSS</a>&rdquo;. Sobat bisa membacanya disitu namun untuk contoh dunia nyata adalah alasan saya untuk menulis blog kali ini.</p>
+
+<h2 id="dasar-sederhana">Dasar Sederhana</h2>
+
+<p>Dari yang telah saya ambil dari artikel yang telah saya sebut diatas hanya dengan kode berikut kita sudah bisa menampilkan input rating minimal.</p>
+
+<pre><code class="language-html">&lt;div class=&quot;input-rating&quot;&gt;
+  &lt;div class=&quot;rating&quot;&gt;
+    &lt;span&gt;☆&lt;/span&gt;
+    &lt;span&gt;☆&lt;/span&gt;
+    &lt;span&gt;☆&lt;/span&gt;
+    &lt;span&gt;☆&lt;/span&gt;
+    &lt;span&gt;☆&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="language-css">.input-rating {
+  text-align: left;
+  display: inline-block;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating &gt; span {
+  display: inline-block;
+  position: relative;
+  font-size: x-large;
+  width: 1.1em;
+}
+.rating &gt; span:hover:before,
+.rating &gt; span:hover ~ span:before {
+   content: &quot;\2605&quot;;
+   position: absolute;
+   color: orange;
+}
+</code></pre>
+
+<h2 id="interaksi-javascript">Interaksi Javascript</h2>
+
+<p>Untuk bisa digunakan dalam kasus nyata tentu kita butuh sebuah fungsi javascript untuk memberikan nyawa agar rating input mampu menampung dan memuat nilai.</p>
+
+<p>Pertama untuk mengirim nilai diperlukan elemen input dengan tipe <strong>hidden</strong> dan penambahan attribute <code>id</code> untuk binding ke fungsi javascript nantinya,</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;input-rating&#34;</span><span class="p">&gt;</span>
+<span class="hl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;rating&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;rating&#34;</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;rating&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;0&#34;</span><span class="p">&gt;</span>
+</span>    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
+
+<p>Kedua adalah memberi nilai kepada setiap bintang agar bisa di identifikasi nilai yang dimaksud dengan mengandalkan atribute <code>data-*</code> agar lebih mudah,</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;input-rating&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;rating&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;rating&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;rating&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;0&#34;</span><span class="p">&gt;</span>
+<span class="hl">    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">data-value</span><span class="o">=</span><span class="s">&#34;5&#34;</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">data-value</span><span class="o">=</span><span class="s">&#34;4&#34;</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">data-value</span><span class="o">=</span><span class="s">&#34;3&#34;</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">data-value</span><span class="o">=</span><span class="s">&#34;2&#34;</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">data-value</span><span class="o">=</span><span class="s">&#34;1&#34;</span><span class="p">&gt;</span>☆<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
+
+<p>Ketiga kita mulai membuat fungsi javascript-nya agar saat salah satu bintang di klik maka nilai yang dibawa akan disimpan pada elemen ber-tipe <strong>hidden</strong> tadi,</p>
+
+<pre><code class="language-js">var rating = document.getElementById('rating');
+
+rating.onclick = function (event) {
+  rating.firstElementChild.value = event.target.dataset.value
+}
+</code></pre>
+
+<p><em><strong>Catatan</strong>: Properti <code>dataset</code> adalah properti bawaan yang menampung nilai dari atribute elemen yang sudah pernah di deklarasi sebelumnya dengan nama prefix <code>data-</code></em></p>
+
+<h2 id="memuat-data-sebelumnya">Memuat Data Sebelumnya</h2>
+
+<p>Terakhir sebagai penutup adalah membuat presentasi bintang bisa tetap pada nilai yang telah di pilih dari event klik sebelumnya, untuk itu kita perlu menambah selector css, ubah bagian css menjadi seperti berikut,</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">rating</span> <span class="o">&gt;</span> <span class="nt">span</span><span class="p">:</span><span class="nd">hover</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">rating</span> <span class="o">&gt;</span> <span class="nt">span</span><span class="p">:</span><span class="nd">hover</span> <span class="o">~</span> <span class="nt">span</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">rating</span> <span class="o">&gt;</span> <span class="nt">span</span><span class="p">.</span><span class="nc">active</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">rating</span> <span class="o">&gt;</span> <span class="nt">span</span><span class="p">.</span><span class="nc">active</span> <span class="o">~</span> <span class="nt">span</span><span class="p">:</span><span class="nd">before</span> <span class="p">{</span>
+  <span class="c">/* ... */</span>
+<span class="p">}</span></code></pre></div>
+
+<p>kemudian tambahkan pula kode berikut pada fungsi javascript,</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">rating</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">);</span>
+
+<span class="nx">rating</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+<span class="hl">  <span class="c1">// Reset semua class chidren
+</span></span><span class="hl"><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">rating</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hl">    <span class="nx">rating</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">)</span>
+</span><span class="hl">  <span class="p">}</span>
+</span>
+<span class="hl">  <span class="c1">// Tambah class &#34;active&#34; untuk bintang terpilih
+</span></span><span class="hl"><span class="c1"></span>  <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">)</span>
+</span>
+  <span class="nx">rating</span><span class="p">.</span><span class="nx">firstElementChild</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">value</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Oke, dengan begini semuanya sudah siap, dan untuk demo + keseluruhan kode adalah sebagai berikut,</p>
+
+
+
+
+
+
+
+<div class="codepen">
+  <script
+    data-slug-hash="wvzVOyR"
+    data-user="bramaudi"
+    data-height="265"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+  ></script>
+</div>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

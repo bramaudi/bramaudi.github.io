@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/javascript/</link>
+    <description>Recent content in Javascript on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Thu, 28 Jan 2021 03:10:57 +0700</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTML Input Rating</title>
+      <link>https://bramaudi.my.id/post/2021/html-input-rating/</link>
+      <pubDate>Thu, 28 Jan 2021 03:10:57 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2021/html-input-rating/</guid>
+      <description>Baru-baru ini saya mendapat project yang mana membutuhkan fitur rating, beruntung saya menemukan artikel &amp;ldquo;Star Rating With Very Little CSS&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Parcel &#43; Tailwind = 😎</title>
+      <link>https://bramaudi.my.id/post/2021/parcel-tailwind/</link>
+      <pubDate>Thu, 14 Jan 2021 21:47:31 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2021/parcel-tailwind/</guid>
+      <description>ParcelJS adalah bundler yang cukup favorit bagi saya, ciri khas dari bundler yang satu ini adalah kelebihannya dalam kemudahan meng-konfigurasi yang sangat mudah jika dibandingkan bundler yang lain yang saya ketahui.</description>
+    </item>
+    
+    <item>
+      <title>CodeIgniter4: Menambahkan Frontend SPA</title>
+      <link>https://bramaudi.my.id/post/2021/ci4-spa-parcel/</link>
+      <pubDate>Wed, 13 Jan 2021 14:19:41 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2021/ci4-spa-parcel/</guid>
+      <description>Dalam membuat frontend yang modern dan interaktif tentu kita harus berkerja menggunakan javascript, dengan CI4 kita hanya bisa membuat tampilan yang kurang interaktif karena mengandalkan php yang notabene adalah bahasa server-side, hanya memproses data lalu menampilkan dokumen halaman kepada browser, kita masih perlu menulis beberapa kode javascript untuk membuat interaksi antar muka yang interaktif, semisal popup, sidebar, dll.</description>
+    </item>
+    
+    <item>
+      <title>Menghitung Kabisat Tidaknya Sebuah Tahun</title>
+      <link>https://bramaudi.my.id/post/2020/menghitung-tahun-kabisat/</link>
+      <pubDate>Wed, 09 Sep 2020 03:10:57 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/menghitung-tahun-kabisat/</guid>
+      <description>Tahun kabisat adalah dimana dalam tahun tersebut terdapat penambahan tanggal sejumlah 1 hari guna menyesuaikan penanggalan dengan tahun astronomi.</description>
+    </item>
+    
+    <item>
+      <title>Vue: Membuat Media Query Reaktif</title>
+      <link>https://bramaudi.my.id/post/2020/vue-media-query/</link>
+      <pubDate>Sat, 29 Aug 2020 07:49:48 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/vue-media-query/</guid>
+      <description>Media Query biasanya kita gunakan saat ingin membuat sebuah tampilan desain yang responsif melalui css, ini diperlukan agar bisa mengatur perbedaan tampilan untuk setiap resolusi layar.</description>
+    </item>
+    
+    <item>
+      <title>Fungsi Double Tap atau Click</title>
+      <link>https://bramaudi.my.id/post/2020/double-tap-function/</link>
+      <pubDate>Thu, 28 May 2020 12:23:09 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/double-tap-function/</guid>
+      <description>Secara native didalam JavaScript sudah ada API untuk melakukan sebuah event double click ini namun sepertinya tidak cocok bila digunakan untuk pengguna ponsel layar sentuh karena double click ini sepertinya khusus untuk mouse click saja, yah seperti namanya hanya &amp;ldquo;click&amp;rdquo; bukan &amp;ldquo;tap&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Vue: Store Tanpa Vuex</title>
+      <link>https://bramaudi.my.id/post/2020/store-tanpa-vuex/</link>
+      <pubDate>Wed, 20 May 2020 17:01:29 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/store-tanpa-vuex/</guid>
+      <description>&amp;ldquo;Store&amp;rdquo; ini biasanya digunakan sebagai tempat penyimpanan state yang bisa diakses secara global, dan untuk Vue sendiri sudah memiliki Vuex sebagai state management resminya.</description>
+    </item>
+    
+    <item>
+      <title>React: Render Ulang / Remount Component</title>
+      <link>https://bramaudi.my.id/post/2020/react-force-remount/</link>
+      <pubDate>Mon, 04 May 2020 06:36:56 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/react-force-remount/</guid>
+      <description>Saya menemukan kasus unik disaat saya mencoba menggunakan React sebagai framework front-end untuk projek yang sedang saya garap, kronologi nya adalah ketika saya ingin memuat dan menampilkan sebuah angka pada komponen yang mana angka tersebut termuat secara asinkron (lazy load).</description>
+    </item>
+    
+    <item>
+      <title>Membuat JQuery Sendiri</title>
+      <link>https://bramaudi.my.id/post/2020/membuat-jquery-sendiri/</link>
+      <pubDate>Thu, 30 Apr 2020 13:20:00 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/membuat-jquery-sendiri/</guid>
+      <description>jQuery adalah library javascript yang mungkin sangat populer di era nya, mungkin popularitas nya seperti pengguna css bootstrap, bahkan dulu semasa saya masih belajar javascript ini setiap saya stuck dan mencoba mencari solusi di internet yang ada malah dikasih javascript berupa syntax jQuery, karena saking populernya.</description>
+    </item>
+    
+  </channel>
+</rss>

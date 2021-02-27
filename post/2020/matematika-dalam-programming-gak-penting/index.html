@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Matematika Dalam Dunia Programming, Gak Penting?</title>
+<meta property="og:title" content="Matematika Dalam Dunia Programming, Gak Penting?" />
+<meta name="twitter:title" content="Matematika Dalam Dunia Programming, Gak Penting?" />
+<meta itemprop="name" content="Matematika Dalam Dunia Programming, Gak Penting?" />
+<meta name="application-name" content="Matematika Dalam Dunia Programming, Gak Penting?" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Membahas seberapa penting kah matematika di dalam dunia pemrogramman." />
+<meta itemprop="description" content="Membahas seberapa penting kah matematika di dalam dunia pemrogramman." />
+<meta property="og:description" content="Membahas seberapa penting kah matematika di dalam dunia pemrogramman." />
+<meta name="twitter:description" content="Membahas seberapa penting kah matematika di dalam dunia pemrogramman." />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Matematika Dalam Dunia Programming, Gak Penting?</h1>
+			<time>Kamis, 23 Juli 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-coding" href="/tags/coding">coding</a>
+				
+				<a class="tag-algoritma" href="/tags/algoritma">algoritma</a>
+				
+			
+			</div>
+			<div class="content">
+				<p>Dari dulu topik tentang &ldquo;Yang penting logikanya&rdquo; ini sering saya jumpai.</p>
+
+<p>Saya pribadi sih tidak terlalu mengerti sama &ldquo;joke&rdquo; yang satu ini, karena disamping saya yang juga gak terlalu suka dan paham soal matematika dari dulu jadinya gak lucu² amat ngena-nya.</p>
+
+<p><img src="/assets/images/meme-matematika-gak-penting.jpg" alt="Meme Matematika Gak Penting" title="Sumber: *gatau, nemu di fb" /></p>
+
+<p>But wait, matematika yang dulu tak pernah ku anggap ternyata berguna juga, mungkin kita mudah membenci hal yang kita tidak kuasai / ketahui.</p>
+
+<p>Nah.. mulai dari sini &ldquo;joke&rdquo; ini terasa agak lucu di otak saya wkwkwk 🤣</p>
+
+<p>Awal ceritanya sih saya iseng coba mempraktek-kan soal yang ada di meme diatas, intinya sih hasil akhir / output yang diharapkan harus jadi seperti ini:</p>
+
+<pre><code class="language-bash">1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz ...
+</code></pre>
+
+<p>Kata <strong>Fizz</strong> berada disetiap kelipatan <strong>3</strong>, <strong>Buzz</strong> dengan kelipatan <strong>5</strong> dan <strong>FizzBuzz</strong> dengan kelipatan <strong>15</strong>.</p>
+
+<p>Nah awalnya saya yang coding dengan basis hanya berbekal logika saja jadinya yang kepikiran adalah coding seperti berikut, *<em>ilustrasi saya pake Javascript karena mudah untuk dipraketk-kan dirumah.</em></p>
+
+<pre><code class="language-js">// Deklarasi variable yang dibutuhkan
+var isFizz = [],
+    isBuzz = [],
+    isFizzBuzz = [],
+    output = []
+
+var limit = 100
+
+// Menyiapkan acuan posisi
+for (var i = 1; i &lt;= limit; i++) {
+  isFizz.push(3 * i)
+  
+  isBuzz.push(5 * i)
+  
+  isFizzBuzz.push(15 * i)
+}
+
+// Iterasi dan replace angkanya
+for (var i = 0; i &lt; limit; i++) {
+  output[i] = i +1
+  if (isFizzBuzz.indexOf(output[i]) != '-1') {
+    output[i] = 'FizzBuzz'
+  }
+  else if (isBuzz.indexOf(output[i]) != '-1') {
+    output[i] = 'Buzz'
+  }
+  else if (isFizz.indexOf(output[i]) != '-1') {
+    output[i] = 'Fizz'
+  }
+}
+
+console.log(output)
+</code></pre>
+
+<p>Dan hasilnya? Oh tentu saja output yang dihasilkan sesuai dengan yang diharapkan.</p>
+
+<p>Logikanya sederhana, saya hanya perlu mencari (acuan posisi) angka mana saja yang akan diganti dengan kata yang diinginkan kemudian disimpan kedalam bentuk array, misalnya saja untuk kata <strong>Fizz</strong> maka;</p>
+
+<pre><code class="language-js">isFizz = [3, 6, 9, 12, 15, ...]
+</code></pre>
+
+<p>Kemudian tahap terakhir adalah mencocokan, apabila <em>index</em> saat iterasi cocok / berada dalam daftar array <code>isFizz</code> maka ganti nilai-nya dengan <em>Fizz</em>.</p>
+
+<p>Namun untungnya ada teman se-frekuensi yang bisa diajak sharing ide, beliau ini kepikiran hal berbeda yakni dengan sedikit sentuhan matematis untuk mencari acuan nilai yang akan diubah, dengan sangat cerdas-nya beliau menggunakan perhitungan pembagian 😮, yah betul, ternyata tinggal dibagikan saja saja angka index-nya dengan angka kelipatan (<code>index</code> / <code>kelipatan</code>).</p>
+
+<p>Jadinya untuk setiap nilai yang cocok / termasuk kedalam kelipatan adalah yang hasil-nya jika di bagikan menjadi nilai yang bulat (bukan angka pecahan), jika saya sesuaikan dengan sistem yang baru ini maka secara keseluruhan coding kurang lebih akan menjadi seperti ini;</p>
+
+<pre><code class="language-js">// Fungsi &quot;isInt&quot; u/ cek apakah angka bulat / pecahan
+var isInt = function (n) { return n % 1 === 0 }
+
+var output = []
+
+for (var i = 1; i &lt;= 100; i++) {
+  if (isInt(i / 15)) {
+    output.push('FizzBuzz')
+  }
+  else if (isInt(i / 5)) {
+    output.push('Buzz')
+  }
+  else if (isInt(i / 3)) {
+    output.push('Fizz')
+  }
+  else {
+    output.push(i)
+  }
+}
+
+console.log(output)
+</code></pre>
+
+<p>Hmmm, apakah ini sudah terlihat lebih simple? memang lebih membingungkan tapi secara kesuluruhan malah akan keliatan keren 👍 hehe.</p>
+
+<p>Tapi secara kebetulan saya juga gak sengaja menemukan peritungan yang lebih simple, dengan menggunakan modulus! Jika angka index di modulus-kan dengan angka kelipatan maka akan menjadi <strong>0</strong> jika cocok.</p>
+
+<p>Dan hasilnya <strong>wow</strong>, coding pertama diatas yang tadinya terlihat pedih dimata kini bisa menjadi agak lebih manusiawi seperti ini;</p>
+
+<pre><code class="language-js">var output = []
+
+for (var i = 1; i &lt;= 100; i++) {
+  if (i % 15 == 0) output.push('FizzBuzz')
+  else if (i % 5 == 0) output.push('Buzz')
+  else if (i % 3 == 0) output.push('Fizz')
+  else output.push(i)
+}
+
+console.log(output)
+</code></pre>
+
+<p>Nah semenjak kejadian inilah saya menjadi agak tertarik dengan matematika, kalo disini bisa juga dibilang <em>kesemsem</em> dalam istilah javanese. Jadi pesan moral yang didapat dari artikel ini apa? <em>useless</em>? <strong>No</strong>.</p>
+
+<p>Jadi gini, sama seperti yang saya bilang sebelumnya,</p>
+
+<blockquote>
+<p>Kita membenci hal yang tidak kita ketahui secara berlebihan dan mencintai hal yang kita ketahui secara berlebihan.
+— <cite>Brama Udi</cite></p>
+</blockquote>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

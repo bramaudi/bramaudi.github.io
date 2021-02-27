@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Membuat Program Pemecah Soal Bahasa Panda UTBK</title>
+<meta property="og:title" content="Membuat Program Pemecah Soal Bahasa Panda UTBK" />
+<meta name="twitter:title" content="Membuat Program Pemecah Soal Bahasa Panda UTBK" />
+<meta itemprop="name" content="Membuat Program Pemecah Soal Bahasa Panda UTBK" />
+<meta name="application-name" content="Membuat Program Pemecah Soal Bahasa Panda UTBK" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Program untuk memecahkan sebuah soal unik yang ada pada UTBK" />
+<meta itemprop="description" content="Program untuk memecahkan sebuah soal unik yang ada pada UTBK" />
+<meta property="og:description" content="Program untuk memecahkan sebuah soal unik yang ada pada UTBK" />
+<meta name="twitter:description" content="Program untuk memecahkan sebuah soal unik yang ada pada UTBK" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Membuat Program Pemecah Soal Bahasa Panda UTBK</h1>
+			<time>Jumat, 24 Juli 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-coding" href="/tags/coding">coding</a>
+				
+				<a class="tag-project" href="/tags/project">project</a>
+				
+			
+			</div>
+			<div class="content">
+				<p>Saya mencoba membuat sebuah program yang mampu memudahkan menjawab soal UTBK seperti berikut.</p>
+
+<p><img src="/assets/images/puzzle-soal-utkbk.jpg" alt="Soal UTBK" title="Soal dengan pertanyaan yang terkesan seperti ketikan asal²an. 🤔" /></p>
+
+<p>Waktu itu saya menemukan sebuah posting di sosmed yang cukup menarik, mengulas tentang soal UTBK diatas, seperti memecahkan puzzle riddle.</p>
+
+<p>Jika dilihat, satu-satunya petunjuk yang ada disini  adalah <strong>K=5</strong>, ini berarti huruf setelahnya adalah sesuai urutan yakni <strong>L=6</strong> dan <strong>M=7</strong> begitu seterusnya.</p>
+
+<p>Ini merupakan sebuah pola acuan (<code>pattern</code>) yang jika di urutkan kembali dalam huruf alfabet adalah <code>ghijklmnopqrstuvwxyzabcdef</code>, lihat huruf <strong>k</strong> ada pada urutan ke <strong>5</strong>.</p>
+
+<p>Dari soal yang ada kita ambil contoh dari satu katanya yaitu <code>ygza</code>, maka:</p>
+
+<pre><code class="language-bash">y = 19
+g = 1
+z = 20
+a = 21
+</code></pre>
+
+<p>Diatas masih menggunakan pola acuan <strong>K=5</strong>, nah namun apa jadinya jika kita kembalikan nomor urutnya kepada pola acuan dari alfabet normal seperti <strong>A=1</strong> dan <strong>B=2</strong>, <strong>C=3</strong> dst. Hasilnya:</p>
+
+<pre><code class="language-bash">19 = s
+1 = a
+20 = t
+21 = u
+</code></pre>
+
+<p>Angka <strong>19</strong>, <strong>1</strong>, <strong>20</strong>, <strong>21</strong> akan menghasilkan kata &ldquo;<em>satu</em>&rdquo;. Dari sini sudah muncul sebuah kata, jadi sudah bisa terpecahkan untuk yang selanjutnya.</p>
+
+<p>Tapi gak efisien juga kalau kita hitung manual, perhuruf misalnya. Pada waktu itu dipostingan tersebut juga ada seseorang yang memberikan sebuah program script yang bisa menghitung jadi tinggal kita input saja pattern yaitu <code>ghijklmnopqrstuvwxyzabcdef</code> juga soal yang telah dienkripsi menjadi seperti ceker ayam 🐥 tadi, maka akan muncul hasilnya.</p>
+
+<p>Namun karena saya kurang puas, kita masih harus mengisi pola acuan secara manual dan tentu harus sedikit menghitung nya kan, untuk itu saya buat yang lebih canggih sedikit yaitu tinggal ketik saja pola nya semisal tadi <strong>K=5</strong> lalu soal nya.</p>
+
+<p><img src="/assets/images/simple-encryption.jpg" alt="Tampilan program" title="Saya beri nama: Simple Encryption" /></p>
+
+<p>Eh iya itu saya tambahin juga fitur enkripsi yang gunanya untuk sebaliknya, yaitu membuat kalimat biasa menjadi kalimat dengan pola alfabet berdasarkan pola yang ditentukan jadi kalian nanti bisa coba buat soal sendiri atau hanya sekedar iseng bikin kode untuk gebetannya.</p>
+
+<p>Program ini bukan hasil fork / modif dari yang bersangkutan sebelumnya, dan dalam versi saya sudah ada kalkulator penghitungan urutan alfabet berdasarkan input pola yang ditentukan yang dimana fungsi ini bisa saya katakan core-of-the-core dari pada program nya, *<em>butuh waktu seharian dibikin pusing mikir logika nya</em> 😁</p>
+
+<p>Itung² bahan belajar, dan memang sangat menantang jadi bikin semangat juga untuk membuatnya 🤩</p>
+
+<p>Mau coba langsung? kunjungi link berikut:
+ <a href="http://simpleencryption.bramaudi.repl.co">http://simpleencryption.bramaudi.repl.co</a></p>
+
+<p>Tidak lupa pula untuk kode sumbernya bisa dilihat gratis dibawah;</p>
+
+<p><a href="https://repl.it/@bramaudi/SimpleEncryption">https://repl.it/@bramaudi/SimpleEncryption</a></p>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algoritma on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/algoritma/</link>
+    <description>Recent content in Algoritma on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Wed, 09 Sep 2020 03:10:57 +0700</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/algoritma/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Menghitung Kabisat Tidaknya Sebuah Tahun</title>
+      <link>https://bramaudi.my.id/post/2020/menghitung-tahun-kabisat/</link>
+      <pubDate>Wed, 09 Sep 2020 03:10:57 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/menghitung-tahun-kabisat/</guid>
+      <description>Tahun kabisat adalah dimana dalam tahun tersebut terdapat penambahan tanggal sejumlah 1 hari guna menyesuaikan penanggalan dengan tahun astronomi.</description>
+    </item>
+    
+    <item>
+      <title>Matematika Dalam Dunia Programming, Gak Penting?</title>
+      <link>https://bramaudi.my.id/post/2020/matematika-dalam-programming-gak-penting/</link>
+      <pubDate>Thu, 23 Jul 2020 10:15:42 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/matematika-dalam-programming-gak-penting/</guid>
+      <description>Dari dulu topik tentang &amp;ldquo;Yang penting logikanya&amp;rdquo; ini sering saya jumpai.</description>
+    </item>
+    
+  </channel>
+</rss>

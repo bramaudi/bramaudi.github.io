@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hiburan on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/hiburan/</link>
+    <description>Recent content in Hiburan on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Sat, 14 Nov 2020 15:00:48 +0700</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/hiburan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Terraguide v1.0.0 - Peluncuran Pertama</title>
+      <link>https://bramaudi.my.id/post/2020/terracraft-v1-0-0/</link>
+      <pubDate>Sat, 14 Nov 2020 15:00:48 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/terracraft-v1-0-0/</guid>
+      <description>Sudah lama gak nulis untuk mengisi blog ini, kali ini saya mau membagikan sebuah aplikasi yang khusus bagi para pemain Terraria / Terrarians yaitu app wiki offline, ini bukan kali pertama saya rilis karena sebelumnya saya sudah coba membagikannya ke teman-teman di komunitas namun saat itu masih versi beta dan untuk kali ini sepertinya saya sudah optimis untuk meluncurkan versi pertama yang tentunya sudah siap digunakan dengan nyaman.</description>
+    </item>
+    
+  </channel>
+</rss>

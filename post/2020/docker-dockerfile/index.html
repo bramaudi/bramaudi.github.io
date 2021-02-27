@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Docker: Dockerfile</title>
+<meta property="og:title" content="Docker: Dockerfile" />
+<meta name="twitter:title" content="Docker: Dockerfile" />
+<meta itemprop="name" content="Docker: Dockerfile" />
+<meta name="application-name" content="Docker: Dockerfile" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Mempelajari tentang cara membuat docker images / pengaturan Dockerfile." />
+<meta itemprop="description" content="Mempelajari tentang cara membuat docker images / pengaturan Dockerfile." />
+<meta property="og:description" content="Mempelajari tentang cara membuat docker images / pengaturan Dockerfile." />
+<meta name="twitter:description" content="Mempelajari tentang cara membuat docker images / pengaturan Dockerfile." />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Docker: Dockerfile</h1>
+			<time>Rabu, 6 Mei 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-server" href="/tags/server">server</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<h2 id="apa-itu-dockerfile">Apa itu Dockerfile?</h2>
+
+<p>Ini adalah sebuah file biasa dengan nama <strong>Dockerfile</strong> yang gunanya adalah sebagai identitikasi / resep untuk image registry nantinya, kita bisa menggunakan file ini untuk membuat sebuah image docker.</p>
+
+<h2 id="meracik-dockerfile">Meracik Dockerfile</h2>
+
+<p>Untuk membuat image maka kita harus mempelajari beberapa perintah dasar berikut secara berurutan.</p>
+
+<h3 id="from">FROM</h3>
+
+<p>Mengambil images yang sudah ada pada registry (DockerHub), contoh;</p>
+
+<pre><code class="language-Dockerfile">FROM golang:1.11.4
+# atau bisa juga misal
+FROM node:latest
+</code></pre>
+
+<p>Proses ini akan berjalan otomatis, apabila image yang dimaksud di local kita tidak ditemukan maka secara otomatis akan menarik dan mengambilnya dari docker registry dalam kasus ini adalah docker hub, jadi kita ga perlu khawatir.</p>
+
+<h3 id="copy">COPY</h3>
+
+<p>Menyalin file source kedalam images yang akan dibuild nantinya, contoh;</p>
+
+<pre><code class="language-Dockerfile">COPY main.go /app/main.go
+</code></pre>
+
+<p>Parameter pertama yaitu <code>main.go</code> adalah lokasi source saat ini / lokal file dan parameter kedua yaitu <code>/app/main.go</code> adalah lokasi internal didalam images nantinya.</p>
+
+<h3 id="run">RUN</h3>
+
+<p>Menjalankan perintah saat build berlangsung, misal saya akan membuild aplikasi nodejs dan ingin menginstall dependensi yang diperlukan melalui npm;</p>
+
+<pre><code class="language-Dockerfile">RUN npm install
+</code></pre>
+
+<p>Untuk kasus seperti diatas kita perlu meng-copy terlebih dahulu <code>package.json</code> kedalam container sebelum melakukan <strong>RUN</strong> ini.</p>
+
+<h3 id="cmd">CMD</h3>
+
+<p>CMD = Command = Perintah, gunanya untuk memberi tau bagaimana cara untuk menjalankan aplikasi kita nantinya.</p>
+
+<pre><code class="language-Dockerfile"># go run /app/main.go
+CMD [&quot;go&quot;, &quot;run&quot;, &quot;/app/main.go&quot;]
+</code></pre>
+
+<p>Isi perintah harus dijadikan array.</p>
+
+<p>Nah tunggu&hellip; sepertinya <strong>RUN</strong> dan <strong>CMD</strong> sama-sama digunakan untuk menjalankan perintah lalu bagaimana? sebenarnya kedua hal ini tidak sama, memang terdapat persamaan namun perbedaan antara keduanya adalah jika RUN hanya dilakukan untuk keperluan build images dan CMD hanyalah command yang akan digunakan untuk menjalankan images, jadi kita bisa memanggil RUN beberapa kali namun tidak untuk CMD.</p>
+
+<p>Perintah CMD ini digunakan saat image sudah menjadi container, seperti pada bagian <strong>COMMAND</strong> pada daftar container yang berjalan berikut;</p>
+
+<pre><code class="language-bash">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+d38f3e88d7bd        mariadb:latest      &quot;docker-entrypoint.s…&quot;   53 minutes ago      Up 53 minutes       0.0.0.0:8083-&gt;3306/tcp   pdd-db
+</code></pre>
+
+<h2 id="memulai-build-images">Memulai Build Images</h2>
+
+<p>Format:</p>
+
+<pre><code>docker build --tag &lt;nama-tag&gt;:&lt;versi&gt; &lt;folder&gt;
+</code></pre>
+
+<p>Misal saya ingin build image dengan nama / tag <strong>my-app</strong> dengan versi <strong>1.0</strong> yang terletak didalam folder saat ini, maka perintahnya adalah sebagai berikut:</p>
+
+<pre><code>docker build --tag my-app:1.0 .
+</code></pre>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

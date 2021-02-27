@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/php/</link>
+    <description>Recent content in Php on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Wed, 13 Jan 2021 14:19:41 +0700</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CodeIgniter4: Menambahkan Frontend SPA</title>
+      <link>https://bramaudi.my.id/post/2021/ci4-spa-parcel/</link>
+      <pubDate>Wed, 13 Jan 2021 14:19:41 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2021/ci4-spa-parcel/</guid>
+      <description>Dalam membuat frontend yang modern dan interaktif tentu kita harus berkerja menggunakan javascript, dengan CI4 kita hanya bisa membuat tampilan yang kurang interaktif karena mengandalkan php yang notabene adalah bahasa server-side, hanya memproses data lalu menampilkan dokumen halaman kepada browser, kita masih perlu menulis beberapa kode javascript untuk membuat interaksi antar muka yang interaktif, semisal popup, sidebar, dll.</description>
+    </item>
+    
+    <item>
+      <title>PHP: Glob</title>
+      <link>https://bramaudi.my.id/post/2020/php-simple-glob/</link>
+      <pubDate>Mon, 04 May 2020 03:36:48 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/php-simple-glob/</guid>
+      <description>Apa itu glob? Glob digunakan untuk dirlisting / menampilkan isi konten suatu direktori.</description>
+    </item>
+    
+    <item>
+      <title>PHP: Curl</title>
+      <link>https://bramaudi.my.id/post/2020/php-curl/</link>
+      <pubDate>Sat, 02 May 2020 04:55:13 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/php-curl/</guid>
+      <description>Curl biasanya digunakan untuk mendapatkan konten yang berasal dari suatu alamat, misalnya jika kita meng-curl alamat/link suatu website maka hasil dari perintah curl adalah isi konten dari alamat target dengan format html atau format yang telah ditentukan, didalam Linux juga terdapat paket bernama curl yang bisa digunakan langsung didalam terminal dengan menggunakan perintah $ sudo apt-get install curl untuk menginstall-nya, biasanya digunakan untuk melihat &amp;ldquo;request&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/coding/</link>
+    <description>Recent content in Coding on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Fri, 24 Jul 2020 10:31:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Membuat Program Pemecah Soal Bahasa Panda UTBK</title>
+      <link>https://bramaudi.my.id/post/2020/program-penerjemah-bahasa-panda/</link>
+      <pubDate>Fri, 24 Jul 2020 10:31:21 +0000</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/program-penerjemah-bahasa-panda/</guid>
+      <description>Saya mencoba membuat sebuah program yang mampu memudahkan menjawab soal UTBK seperti berikut.</description>
+    </item>
+    
+    <item>
+      <title>Matematika Dalam Dunia Programming, Gak Penting?</title>
+      <link>https://bramaudi.my.id/post/2020/matematika-dalam-programming-gak-penting/</link>
+      <pubDate>Thu, 23 Jul 2020 10:15:42 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/matematika-dalam-programming-gak-penting/</guid>
+      <description>Dari dulu topik tentang &amp;ldquo;Yang penting logikanya&amp;rdquo; ini sering saya jumpai.</description>
+    </item>
+    
+  </channel>
+</rss>

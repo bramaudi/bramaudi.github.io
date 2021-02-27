@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Server on bramaudi</title>
+    <link>https://bramaudi.my.id/tags/server/</link>
+    <description>Recent content in Server on bramaudi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Wed, 06 May 2020 08:56:16 +0700</lastBuildDate>
+    
+	<atom:link href="https://bramaudi.my.id/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker: Dockerfile</title>
+      <link>https://bramaudi.my.id/post/2020/docker-dockerfile/</link>
+      <pubDate>Wed, 06 May 2020 08:56:16 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/docker-dockerfile/</guid>
+      <description>Apa itu Dockerfile? Ini adalah sebuah file biasa dengan nama Dockerfile yang gunanya adalah sebagai identitikasi / resep untuk image registry nantinya, kita bisa menggunakan file ini untuk membuat sebuah image docker.</description>
+    </item>
+    
+    <item>
+      <title>Docker: Container</title>
+      <link>https://bramaudi.my.id/post/2020/docker-container/</link>
+      <pubDate>Wed, 06 May 2020 08:17:09 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/docker-container/</guid>
+      <description>Apa itu container? Container adalah sebuah images yang berjalan, jadi saat kita membuat suatu container didalamnya terdapat sebuah images yang dibutuhkan untuk menjalankan suatu aplikasi seperti server, runtime, compiler, atau database dan sebagainya.</description>
+    </item>
+    
+    <item>
+      <title>Docker: Images</title>
+      <link>https://bramaudi.my.id/post/2020/docker-images/</link>
+      <pubDate>Tue, 05 May 2020 07:57:30 +0700</pubDate>
+      
+      <guid>https://bramaudi.my.id/post/2020/docker-images/</guid>
+      <description>Apa itu images? Images adalah sebuah paket container siap pakai yang bisa digunakan untuk membuat container untuk bisa menjalankan sebuah aplikasi, jenis nya bisa bermacam-macam seperti images untuk server, database, tools atau bahkan sistem operasi.</description>
+    </item>
+    
+  </channel>
+</rss>

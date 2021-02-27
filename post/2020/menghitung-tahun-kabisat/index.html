@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title itemprop="name">Menghitung Kabisat Tidaknya Sebuah Tahun</title>
+<meta property="og:title" content="Menghitung Kabisat Tidaknya Sebuah Tahun" />
+<meta name="twitter:title" content="Menghitung Kabisat Tidaknya Sebuah Tahun" />
+<meta itemprop="name" content="Menghitung Kabisat Tidaknya Sebuah Tahun" />
+<meta name="application-name" content="Menghitung Kabisat Tidaknya Sebuah Tahun" />
+<meta property="og:site_name" content="" />
+	<meta name="description" content="Belajar menghitung dan membuat algoritma kabisat tidaknya sebuah tahun" />
+<meta itemprop="description" content="Belajar menghitung dan membuat algoritma kabisat tidaknya sebuah tahun" />
+<meta property="og:description" content="Belajar menghitung dan membuat algoritma kabisat tidaknya sebuah tahun" />
+<meta name="twitter:description" content="Belajar menghitung dan membuat algoritma kabisat tidaknya sebuah tahun" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/lazy-image.css">
+	
+	<script defer src="/js/lazy-image.js"></script>
+</head>
+<body>
+	<header>
+	<div class="heading">
+		<img src="/assets/me.jpeg" alt="profile pic">
+		<a href="https://bramaudi.my.id/">bramaudi</a>
+		
+		<nav>
+			<ul>
+				
+				<li><a href="/tentang/">tentang</a></li>
+				
+				<li><a href="http://github.com/bramaudi">github</a></li>
+				
+			</ul>
+		</nav>
+		
+	</div>
+</header>
+
+	
+	<link rel="stylesheet" href="/css/syntax.css">
+
+	<main class="single">
+		<article class="single">
+			<h1>Menghitung Kabisat Tidaknya Sebuah Tahun</h1>
+			<time>Rabu, 9 September 2020</time>
+			<div class="tags">
+			
+				
+				<a class="tag-algoritma" href="/tags/algoritma">algoritma</a>
+				
+				<a class="tag-javascript" href="/tags/javascript">javascript</a>
+				
+			
+			</div>
+			<div class="content">
+				
+
+<p>Tahun kabisat adalah dimana dalam tahun tersebut terdapat penambahan tanggal sejumlah 1 hari guna menyesuaikan penanggalan dengan tahun astronomi.</p>
+
+<p>Dalam 1 tahun tidaklah terdiri dari 365 hari saja namun lebih tepatnya <strong>365 hari 5 jam 48 menit 45,1814 detik</strong>.</p>
+
+<h2 id="tl-dr">TL;DR</h2>
+
+<p>Tahun kabisat memiliki tanggal 29 februari.</p>
+
+<h2 id="algoritma">Algoritma</h2>
+
+<p>Nah untuk mengetahui apakah dari suatu tahun itu merupakan tahun kabisat atau tidak terdapat 2 algoritma:</p>
+
+<p>Pertama, menggunakan modulo:</p>
+
+<pre><code class="language-bash">if year modulo 4 is 0
+then
+if year modulo 100 is 0
+then
+if year modulo 400 is 0
+then
+is_leap_year
+else
+not_leap_year
+else is_leap_year
+else not_leap_year
+</code></pre>
+
+<p>atau kedua menggunakan pembagian:</p>
+
+<pre><code class="language-bash">if year is divisible by 400 then is_leap_year
+else if year is divisible by 100 then not_leap_year
+else if year is divisible by 4 then is_leap_year
+else not_leap_year
+</code></pre>
+
+<p>Oke disini saya akan coba implemen kedua algoritma diatas, latihan ini seperti biasa dengan menggunakan bahasa Javascript, pertama saya coba menggunakan cara pembagian:</p>
+
+<pre><code class="language-js">function isKabisat(tahun) {
+  // fungsi untuk mengetahui tahun bisa dibagi atau tidaknya
+  function divisible(n) { return n % 1 === 0 }
+  
+  if (divisible(tahun / 400)) return 'Kabisat'
+  else if (divisible(tahun / 100)) return 'Bukan'
+  else if (divisible(tahun / 4)) return 'Kabisat'
+  else return 'Bukan'
+}
+</code></pre>
+
+<p>Sepertinya terlihat mudah dan jelas, kita juga masih bisa menyederhanakan menggunakan operasional kondisi (ternary) namun efek sampingnya akan membuat coding menjadi agak aneh dan mungkin sulit dibaca.</p>
+
+<pre><code class="language-js">function isKabisat(tahun) {
+  // ubah nama fungsi agar lebih pendek
+  function div(n) { return n % 1 === 0 }
+  
+  return div(tahun / 400)
+    ? 'Kabisat'
+    : div(tahun / 100)
+      ? 'Bukan'
+      : div(tahun / 4)
+        ? 'Kabisan'
+        : 'Bukan'
+}
+</code></pre>
+
+<p>Nah sekarang bagaimana jika kita menggunakan operator modulo?</p>
+
+<pre><code class="language-js">function isKabisat(tahun) {
+  if (tahun % 4 == 0)
+    if (tahun % 100 == 0)
+      if (tahun % 400 == 0) return 'Kabisat'
+      else return 'Bukan'
+    else return 'Kabisat'
+  else return 'Bukan'
+}
+</code></pre>
+
+<p>Hmm&hellip; lumayan, sengaja tidak saya kasih tanda kurung kurawal namun masih bisa dibaca alias readable, namun bagaimana jika saya coba sederhana-kan lagi ya?</p>
+
+<pre><code class="language-js">function isKabisat(tahun) {
+  return tahun % 4 == 0 || tahun % 100 == 0 &amp;&amp; tahun % 400 != 0
+    ? 'Kabisat'
+    : 'Bukan'
+}
+</code></pre>
+
+<p>Nah gitu kan terlihat lebih enak, lebih sederhana namun masih terbaca.</p>
+
+<p>Untuk cara uji coba nya seperti ini:</p>
+
+<pre><code class="language-js">console.log(isKabisat(2000)) // Kabisat
+console.log(isKabisat(1999)) // Bukan
+</code></pre>
+
+<p>Silahkan berikan komentar nya apabila terdapat sesuatu yang mengganjal terutama pada gaya coding saya wkwk / jika teman-teman berkenan untuk berbagi kode yang lebih sederhana lagi.</p>
+
+<p>Oke sekian saja dan semoga bermanfaat.</p>
+
+<p>Refrensi: <a href="https://id.wikipedia.org/wiki/Tahun_kabisat">Wikipedia</a></p>
+
+			</div>
+			
+		</article>
+	</main>
+<aside>
+	<div class="segments">
+		<div class="segment">
+			<h3>Posting Terkini</h3>
+			<ul>
+				
+				<li><a href="/post/2021/html-input-rating/">HTML Input Rating</a></li>
+				
+				<li><a href="/post/2021/parcel-tailwind/">Parcel &#43; Tailwind = 😎</a></li>
+				
+				<li><a href="/post/2021/ci4-spa-parcel/">CodeIgniter4: Menambahkan Frontend SPA</a></li>
+				
+				<li><a href="/post/2020/terracraft-v1-0-0/">Terraguide v1.0.0 - Peluncuran Pertama</a></li>
+				
+				<li><a href="/post/2020/menghitung-tahun-kabisat/">Menghitung Kabisat Tidaknya Sebuah Tahun</a></li>
+				
+				<li><a href="/post/2020/vue-media-query/">Vue: Membuat Media Query Reaktif</a></li>
+				
+				<li><a href="/post/2020/program-penerjemah-bahasa-panda/">Membuat Program Pemecah Soal Bahasa Panda UTBK</a></li>
+				
+				<li><a href="/post/2020/matematika-dalam-programming-gak-penting/">Matematika Dalam Dunia Programming, Gak Penting?</a></li>
+				
+				<li><a href="/post/2020/double-tap-function/">Fungsi Double Tap atau Click</a></li>
+				
+				<li><a href="/post/2020/store-tanpa-vuex/">Vue: Store Tanpa Vuex</a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="segment">
+			<h3>Label</h3>
+			<ul>
+				 
+				
+				<li>
+					<a class="tag-algoritma" href=/tags/algoritma/ title='Telusuri label "algoritma"'>
+						algoritma
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-coding" href=/tags/coding/ title='Telusuri label "coding"'>
+						coding
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-css" href=/tags/css/ title='Telusuri label "css"'>
+						css
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-hiburan" href=/tags/hiburan/ title='Telusuri label "hiburan"'>
+						hiburan
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-javascript" href=/tags/javascript/ title='Telusuri label "javascript"'>
+						javascript
+					</a>
+					<span class="tag count">9</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-nodejs" href=/tags/nodejs/ title='Telusuri label "nodejs"'>
+						nodejs
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-php" href=/tags/php/ title='Telusuri label "php"'>
+						php
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-project" href=/tags/project/ title='Telusuri label "project"'>
+						project
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-react" href=/tags/react/ title='Telusuri label "react"'>
+						react
+					</a>
+					<span class="tag count">1</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-server" href=/tags/server/ title='Telusuri label "server"'>
+						server
+					</a>
+					<span class="tag count">3</span>
+				</li>
+				
+				 
+				
+				<li>
+					<a class="tag-vue" href=/tags/vue/ title='Telusuri label "vue"'>
+						vue
+					</a>
+					<span class="tag count">2</span>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<button class="scrollup" id="scrollup">
+	<img src="/assets/ufo.gif" title="Lets go" alt="go up">
+	<span class="title">Up Up ...</span>
+</button>
+<footer>
+	<p>&copy; 2020-2021 <a href="https://bramaudi.my.id/">bramaudi</a></p>
+</footer>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>
