@@ -1,5 +1,3 @@
-@import url('https://fontbit.io/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-
 /* Base */
 :root {
 	--color-background: 255, 255, 255;
@@ -381,6 +379,10 @@ time {
 	color: rgb(var(--color-text-strong), .8);
 }
 
+.post .content img {
+	max-width: 100%;
+}
+
 .post .content :not(pre)>code {
 	padding: .05em .3em;
 	background-color: rgba(var(--color-text), .1);
@@ -394,6 +396,7 @@ time {
 	list-style: none;
 }
 .post .content nav ul li {
+	flex: 1;
 	margin: 0 .5em;
 }
 .post .content nav ul li strong {

@@ -3,6 +3,8 @@ title: Skyblock Terraria Mobile 1.4
 date: 2022-01-24 10:14:50
 tags: terraria
 ---
+
+![Terraria Skyblock](/static/images/terraria-skyblock.png)
 ## FAQ
 Apa pun yang tidak tercantum di bagian ini tidak dapat diperoleh karena berbagai alasan:
 
@@ -52,7 +54,7 @@ Apa pun yang tidak tercantum di bagian ini tidak dapat diperoleh karena berbagai
 
 **Saran armor terbaik?** - Sebelum lawan *moonlord*, armor terbaik hanya *hallowed*
 
-**Cara unduh/mainkan map?** - Unduh world mode [Expert](/files/Skyblock-Expert.wld) / [Journey](/files/Skyblock-Journey.wld) lalu pindah ke...
+**Cara unduh/mainkan map?** - Unduh world mode [Expert](/static/files/Skyblock-Expert.wld) / [Journey](/static/files/Skyblock-Journey.wld) lalu pindah ke...
 
 ```bash
 sdcard
