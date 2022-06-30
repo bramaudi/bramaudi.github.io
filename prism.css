@@ -1,8 +1,11 @@
+@import url('https://fontbit.io/css2?family=IBM+Plex+Mono:ital@0;1&display=swap');
+
 pre[class*='language-'] {
 	position: relative;
 	padding: 1em;
 	margin-bottom: 1em;
-	  font-size: inherit;
+	font-size: inherit;
+	font-family: 'IBM Plex Mono', monospace;
 	border-radius: .5em;
 	background-color: rgba(var(--color-text), .1);
   }

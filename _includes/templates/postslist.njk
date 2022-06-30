@@ -3,7 +3,7 @@
   <article class="posts">
     <h3 class="title"><a href="{{ post.data.url }}">{{ post.data.title }}</a></h3>
     <div class="summary">
-      {{ post.data.content | truncate(160) }}
+      {{ post.data.content | truncate(160) | md | striptags(true) }}
     </div>
     <div class="meta">
       <time datetime="{{ post.data.date | date('DATETIME') }}">
