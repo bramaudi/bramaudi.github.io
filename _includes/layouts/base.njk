@@ -5,38 +5,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or site.title }}</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <meta name="description" content="{{ description or site.description }}">
+    <link href="https://fontbit.io/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
     <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site.title }}">
     <link rel="alternate" href="/feed.json" type="application/json" title="{{ site.title }}">
     <script type="module" src="/js/main.js"></script>
   </head>
   <body>
-    <nav class="navbar">
-      <a href="/" class="navbar-home">
-        <strong>{{ site.title }}</strong>
-      </a>
+    <div class="radial-gradient"></div>
+    <header>
+      <a href="/">{{ site.title }}</a>
+      <nav>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown__wrapper" tabindex="1">
+            <div class="nav-dropdown__button">
+              Menu
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="m112 184l144 144l144-144"></path></svg>
+            </div>
+            <div class="nav-dropdown__content">
+              {%- for entry in search.pages("menu.visible=true", "menu.order") %}
+              <a href="{{ entry.data.url }}"{% if entry.data.url == url %} class="active" aria-current="page"{% endif %}>
+                {{ entry.data.menu.title or entry.data.title }}
+              </a>
+              {%- endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="nav-search" tabindex="-1">
+          <button class="nav-search__button">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512"><path fill="currentColor" d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3ZM97.92 222.72a124.8 124.8 0 1 1 124.8 124.8a124.95 124.95 0 0 1-124.8-124.8Z"></path></svg>
+          </button>
+          <div class="nav-search__content">
+            <oom-search label="Search" placeholder="Post title or tag" src="{{ '/search.json' | url }}"></oom-search>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-      <ul class="navbar-links">
-      {%- for entry in search.pages("menu.visible=true", "menu.order") %}
-        <li>
-          <a href="{{ entry.data.url }}"{% if entry.data.url == url %} aria-current="page"{% endif %}>
-            {{ entry.data.menu.title or entry.data.title }}
-          </a>
-        </li>
-      {%- endfor %}
-      </ul>
+    <div class="layout">
+      <main class="{{ bodyClass }}">
+        {{ content | safe }}
+      </main>
+      {{ comp.sidebar() | safe }}
+    </div>
 
-      <div class="navbar-search">
-        <oom-search label="Search" placeholder="Post title or tag" src="{{ '/search.json' | url }}"></oom-search>
-      </div>
-    </nav>
-
-    <main class="{{ bodyClass }}">
-      {{ content | safe }}
-    </main>
-
-    <footer></footer>
+    <footer>&copy; 2022 Brama Udi</footer>
 
     <!-- Current page: {{ url }} -->
   </body>

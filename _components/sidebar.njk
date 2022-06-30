@@ -1,0 +1,14 @@
+<aside>
+	
+	{{ content | safe }}
+
+	<section class="profile">
+	  <div class="pic">
+		<img src="/static/bramaudi.jpg" />
+		<div class="title">{{ site.author.name }}</div>
+	  </div>
+	  <div class="info">
+		{{ site.author.description }}
+	  </div>
+	</section>
+</aside>

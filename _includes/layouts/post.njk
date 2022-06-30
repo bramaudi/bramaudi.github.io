@@ -2,42 +2,46 @@
 layout: layouts/base.njk
 bodyClass: body-post
 ---
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title">{{ title }}</h1>
+<link rel="stylesheet" href="/prism.css">
+<section>
+	<article class="post">
+		<h2 class="title">{{ title }}</h2>
+		<div class="meta">
+			<time datetime="{{ date | date('DATETIME') }}">
+        {{ date | date('HUMAN_DATE') }}
+      </time>
+			<div class="tags">
+      {% for tag in tags %}
+        <a href="/tags/{{ tag }}/">{{ tag }}</a>
+      {% endfor %}
+			</div>
+		</div>
+		<div class="content">
+			{{ content | safe }}
+      
+      {%- if type == "posts" %}
+        <hr>
 
-    <nav class="post-tags">
-    {% for tag in tags %}
-      <a href="/tags/{{ tag }}/" class="tag">{{ tag }}</a>
-    {% endfor %}
-    </nav>
+        <nav>
+          <ul>
+            {%- set previousPost = search.previousPage(url, "type=posts") %}
+            {%- if previousPost %}
+            <li>
+              <strong>← Previous</strong>
+              <a href="{{ previousPost.data.url }}" rel="prev">{{ previousPost.data.title }}</a>
+            </li>
+            {% endif %}
 
-    <time class="post-date" datetime="{{ date | date('DATETIME') }}">
-      {{ date | date('HUMAN_DATE') }}
-    </time>
-  </header>
-
-  <div class="post-body">
-    {{ content | safe }}
-  </div>
-</article>
-
-<hr>
-
-<nav class="post-navigation">
-  <ul>
-    {%- set previousPost = search.previousPage(url, "type=posts") %}
-    {%- if previousPost %}
-    <li>
-      ← Previous: <a href="{{ previousPost.data.url }}" rel="prev">{{ previousPost.data.title }}</a>
-    </li>
-    {% endif %}
-
-    {%- set nextPost = search.nextPage(url, "type=posts") %}
-    {%- if nextPost %}
-    <li>
-      <strong>Next: <a href="{{ nextPost.data.url }}" rel="next">{{ nextPost.data.title }}</a> →</strong>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
+            {%- set nextPost = search.nextPage(url, "type=posts") %}
+            {%- if nextPost %}
+            <li>
+              <strong>Next →</strong>
+              <a href="{{ nextPost.data.url }}" rel="next">{{ nextPost.data.title }}</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {%- endif %}
+		</div>
+	</article>
+</section>

@@ -2,14 +2,12 @@
 layout: layouts/base.njk
 bodyClass: body-tag
 ---
-<h1>{{ title }}</h1>
+<h1 class="section-title">{{ title }}</h1>
 
 {% set postslist = results %}
 {% include "templates/postslist.njk" %}
 
-<hr>
-
-<nav class="post-navigation">
+<nav class="navigation">
   <ul>
     {%- if pagination.previous %}
     <li>
