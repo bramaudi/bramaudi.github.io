@@ -24,9 +24,9 @@ site
   .use(slugifyUrls({ alphanumeric: false }))
   .use(resolveUrls())
   .use(netlifyCMS({ netlifyIdentity: true }))
-  .addEventListener(
-    "beforeBuild",
-    () => gpm(["oom-components/searcher"], "js/vendor"),
-  );
+  // .addEventListener(
+  //   "beforeBuild",
+  //   () => gpm(["oom-components/searcher"], "js/vendor"),
+  // );
 
 export default site;
