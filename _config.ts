@@ -7,7 +7,7 @@ import basePath from "lume/plugins/base_path.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import netlifyCMS from "lume/plugins/netlify_cms.ts";
-import gpm from "https://deno.land/x/gpm@v0.4.1/mod.ts";
+// import gpm from "https://deno.land/x/gpm@v0.4.1/mod.ts";
 
 const site = lume({
   location: new URL("https://bramaudi.dev/"),
