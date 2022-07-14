@@ -481,6 +481,9 @@ aside section {
 	font-size: x-large;
 }
 
+.profile .info {
+	margin-bottom: 1em;
+}
 .profile .info p {
 	margin-bottom: 1em;
 }
