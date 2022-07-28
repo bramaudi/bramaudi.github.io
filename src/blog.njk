@@ -1,0 +1,14 @@
+---
+layout: layout.njk
+title: Brama Udi
+---
+<h1 class="page-title">Blog</h1>
+{% for year, yearPosts in collections.blogByYear %}
+<h2 class="blog-year">{{ year }}</h2>
+<div class="blog-posts">
+    {% for post in yearPosts %}
+    <div><a href="{{ post.url }}">{{ post.data.title }}</a></div>
+    <div class="post-entry-date">{% formatDate post.date, "LLL yyyy" %}</div>
+    {% endfor %}
+</div>
+{% endfor %}

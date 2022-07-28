@@ -1,0 +1,26 @@
+---
+layout: layout.njk
+title: Projects
+---
+
+<div class="publications-container">
+    {% for project in projects %}
+    <div class="publication-teaser">
+        <img
+            src="{{ project.thumbnail }}"
+            alt="{{ project.name }}'s logo"
+            width="150" height="150"
+        />
+    </div>
+    <div class="publication-details">
+        <div class="publication-title">{{ project.name }}</div>
+        <div class="publication-authors">{{ project.author }}</div>
+        <div class="publication-info">{{ project.description }}</div>
+        <div class="publication-links">
+            {% for link in project.links %}
+            <a href="{{ link.url }}" target="_blank">{{ link.name }}</a> &nbsp;&nbsp;
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>

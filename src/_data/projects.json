@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Gridy",
+        "author": "Brama Udi",
+        "description": "Online tool to add grid line overlay to image, useful for drawing with grid scale method.",
+        "thumbnail": "https://gridy.vercel.app/pwa-192x192.png",
+        "links": [
+            { "name": "Website", "url": "https://gridy.vercel.app" },
+            { "name": "Github", "url": "https://github.com/bramaudi/gridy" }
+        ]
+    },
+    {
+        "name": "QRMan",
+        "author": "Brama Udi",
+        "description": "Simple web-based tool to scan (from camera / gallery) and generate QR code.",
+        "thumbnail": "https://qrman.vercel.app/pwa-192x192.png",
+        "links": [
+            { "name": "Website", "url": "https://qrman.vercel.app" },
+            { "name": "Github", "url": "https://github.com/bramaudi/qrman" }
+        ]
+    }
+]

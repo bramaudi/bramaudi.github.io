@@ -1,0 +1,11 @@
+---
+layout: layout.njk
+---
+
+<article>
+    <h1>{{ title }}</h1>
+    <time class="post-date" datetime="{% formatDate date, 'yyyy-mm-dd' %}">
+        {% formatDate date, "LLL dd, yyyy" %}
+    </time>
+    {{ content | safe }}
+</article>

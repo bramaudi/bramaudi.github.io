@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/manifest.webmanifest" />
+</head>
+
+<body>
+    <nav>
+        <div class="home">
+            <a href="/">Brama Udi</a>
+        </div>
+        <a href="/about">About</a> &nbsp;
+        <a href="/blog">Blog</a> &nbsp;
+        <a href="/projects">Projects</a>
+    </nav>
+    <div id="maincontent">
+        {{ content | safe }}
+    </div>
+</body>
+
+</html>
