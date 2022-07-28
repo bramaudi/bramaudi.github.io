@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>bramaudi.dev</title>
+	<subtitle>I am person that write stuff.</subtitle>
+	<link href="https://bramaudi.github.io/feed.xml" rel="self"/>
+	<link href="https://bramaudi.github.io/"/>
+	
+	<updated>2022-07-28T01:10:12Z</updated>
+	<id>https://bramaudi.github.io/</id>
+	<author>
+		<name>Brama Udi</name>
+		<email>bramaudi.al@gmail.com</email>
+	</author>
+	<entry>
+		<title>Pengubah Kalender Masehi Hijriah</title>
+		<link href="https://bramaudi.github.io/pengubah-kalender-masehi-hijriah/"/>
+		<updated>2022-03-08T13:50:38Z</updated>
+		<id>https://bramaudi.github.io/pengubah-kalender-masehi-hijriah/</id>
+		<content type="html">&lt;h2&gt;Algoritma&lt;/h2&gt;
+&lt;p&gt;Hitungan hijriah dalam pengubah tanggal masehi ke hijriah ini menggunakan API Javascript bawaan (&lt;code&gt;Intl.DateTimeFormat&lt;/code&gt;) dengan menggunakan metode hitungan &lt;code&gt;islamic-civil&lt;/code&gt;, referensi: https://stackoverflow.com/a/71004938.&lt;/p&gt;
+&lt;p&gt;Dan tanggal yang dihasilkan pun sama dengan saat menggunakan script dari &lt;a href=&quot;https://www.al-habib.info/islamic-calendar/hijricalendartext.htm&quot;&gt;al-habib&lt;/a&gt; dengan penyesuaian &lt;code&gt;-1&lt;/code&gt; hari.&lt;/p&gt;
+&lt;p&gt;Untuk formula perhitungan pasaran berasal dari modulo 5 dari (&lt;em&gt;Julian Day&lt;/em&gt; - 1), berikut cara mendapat julian day:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;(UNIX TIME / 86400000) + 2440587.5 === Julian Day;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dalam kasus ini karena menggunakan Javascript maka &lt;code&gt;UNIX TIME&lt;/code&gt; kita ubah menjadi &lt;code&gt;Date.now()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Dengan urutan array pasaran sebagai berikut:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;[&amp;quot;Pon&amp;quot;,&amp;quot;Wage&amp;quot;,&amp;quot;Kliwon&amp;quot;,&amp;quot;Legi&amp;quot;,&amp;quot;Pahing&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;</content>
+	</entry>
+	<entry>
+		<title>Format Codec Audio/Video Untuk Whatsapp</title>
+		<link href="https://bramaudi.github.io/format-codec-audio-video-untuk-whatsapp/"/>
+		<updated>2022-03-08T10:11:34Z</updated>
+		<id>https://bramaudi.github.io/format-codec-audio-video-untuk-whatsapp/</id>
+		<content type="html">&lt;p&gt;Alasan utama mengapa saya bikin post ini karena sering kali saat saya ingin sekedar membuat &lt;em&gt;Story Whatsapp&lt;/em&gt; biasanya terhalang oleh format yang tidak didukung, yah meskipun formatnya sudah MP4 namun yang saya yakin tentu &amp;quot;codec&amp;quot;-nya tidak didukung oleh Whatsapp, day ruined!&lt;/p&gt;
+&lt;p&gt;Dulu bahkan saking gregetnya saya sampai install apk video converter untuk kebutuhan &lt;em&gt;story&lt;/em&gt;, padahal paling sering cuma untuk sekedar share meme. Namun ide cemerlang baru terpikir, dengan menggunakan paket &lt;code&gt;ffmpeg&lt;/code&gt; bawaan linux.&lt;/p&gt;
+&lt;p&gt;Ternyata syarat untuk bisa mengirim video ke whatsapp ialah menggunakan codec sebagai berikut:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Video: &lt;strong&gt;libx264&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Audio: &lt;strong&gt;AAC&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Untuk perintah &lt;code&gt;ffmpeg&lt;/code&gt; maka jadinya seperti ini:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;ffmpeg -i original.mp4 -vcodec libx264 -acodec aac whatsapp.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Saya coba terapkan juga untuk &lt;code&gt;SimpleScreenRecorder&lt;/code&gt;[^1] juga berhasil, kini habis rekam tinggal share aja tuh XD&lt;/p&gt;
+&lt;p&gt;[^1]: SimpleScreenRecorder (SSR) adalah aplikasi untuk merekam layar favorit saya yang hampir ada di semua distro linux, cek &lt;a href=&quot;https://www.maartenbaert.be/simplescreenrecorder/&quot;&gt;website&lt;/a&gt;-nya.&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Loop Templating Plain Javascript</title>
+		<link href="https://bramaudi.github.io/loop-templating-plain-javascript/"/>
+		<updated>2022-02-08T17:02:27Z</updated>
+		<id>https://bramaudi.github.io/loop-templating-plain-javascript/</id>
+		<content type="html">&lt;p&gt;Melakukan loop data pada template tanpa menggunakan framework perlu sedikit trik karena jika dengan framework tentu sudah ada mekanisme dari tiap framework itu sendiri namun jika murni javascript kita harus membuat mekanisme sendiri.&lt;/p&gt;
+&lt;p&gt;Berikut ini implementasi yang sering saya gunakan, biasanya kasus penggunaan untuk pembuatan fungsi pencarian pada &lt;em&gt;Static Site Generator&lt;/em&gt; karena terlalu overkill jika saya pakai framework.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;/**
+* Loop Templating
+* @param {Array&amp;lt;{ [key: string]: unknown }&amp;gt;} data
+*/
+function maplist($el, data) {
+  const interpolationRegex = /\[([\w]+)\]/g; // usage: [title]
+  const num = (item, i) =&amp;gt; ({i, n: i+1, ...item})
+	
+  $el._$ = $el._$ || $el.innerHTML;
+  $el.textContent = &#39;&#39;;
+	
+  $el.innerHTML = data.map(num).reduce((rawTemplate, obj) =&amp;gt; {
+    return rawTemplate += $el._$.replace(
+      interpolationRegex,
+      (match, group1) =&amp;gt; obj[group1.trim()] ?? match
+    )
+  }, &#39;&#39;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Lihat pada &lt;a href=&quot;https://gist.github.com/bramaudi/3011b94652a014667dbd5be0d36e5f63&quot;&gt;gist&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Contoh Penggunaan&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div id=&amp;quot;animelist&amp;quot;&amp;gt;
+  &amp;lt;div class=&amp;quot;user-[i]&amp;quot;&amp;gt;[n]. [name]&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;maplist(document.getElementById(&#39;animelist&#39;), [
+  { name: &#39;Attack On Titan&#39; },
+  { name: &#39;Jojo Bizzare Adventure&#39; },
+  { name: &#39;One Piece&#39; },
+  { name: &#39;Naruto&#39; },
+])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Hasilnya:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div id=&amp;quot;animelist&amp;quot;&amp;gt;
+  &amp;lt;div class=&amp;quot;user-0&amp;quot;&amp;gt;1. Attack On Titan&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;user-1&amp;quot;&amp;gt;2. Jojo Bizzare Adventure&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;user-2&amp;quot;&amp;gt;3. One Piece&amp;lt;/div&amp;gt;
+  &amp;lt;div class=&amp;quot;user-3&amp;quot;&amp;gt;4. Naruto&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Penjelasan&lt;/h2&gt;
+&lt;p&gt;Pertama saya mendeklarasi syntax &lt;em&gt;interpolation&lt;/em&gt; dengan menggunakan &lt;em&gt;Regex&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const interpolationRegex = /\[([\w]+)\]/g; // usage: [title]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ini bisa kita custom jika mau, misalnya saja untuk menghindari benturan dengan template engine dari server, butuh sedikit pengetahuan tentang regex.&lt;/p&gt;
+&lt;p&gt;Lalu saya juga melakukan mutasi pada array untuk menambahkan informasi index &amp;amp; penomoran yang nantinya bisa kita akses dengan &lt;code&gt;[i]&lt;/code&gt; untuk index dan &lt;code&gt;[n]&lt;/code&gt; untuk penomoran:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const num = (item, i) =&amp;gt; ({i, n: i+1, ...item})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;Selanjutnya kita bahas fungsi utama tentang manipulasi DOM, pertama saat pertama kali fungsi &lt;code&gt;maplist&lt;/code&gt; dimuat kita ambil &lt;code&gt;innerHTML&lt;/code&gt; dari element yang bersangkutan kemudian menyimpannya didalam sebuah property didalam element itu sendiri, dalam kasus ini element adalah &lt;code&gt;$el&lt;/code&gt; dan nama property-nya adalah &lt;code&gt;_$&lt;/code&gt; (sebenarnya terserah namun untuk penyingkatan saja)...&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;$el._$ = $el._$ || $el.innerHTML;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...kemudian setelah string template sudah kita simpan langkah selanjutnya adalah membersihkan &lt;em&gt;children&lt;/em&gt;...&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;$el.textContent = &#39;&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...agar template mentah kita tidak tampil, atau dalam kasus lain kita juga bisa menggantinya dengan template untuk tampilan state kosong seperti &amp;quot;&lt;em&gt;Daftar masih kosong&lt;/em&gt;&amp;quot; misalnya.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Terakhir adalah proses &lt;em&gt;render&lt;/em&gt; data dengan mengembalikan nilai &lt;code&gt;innerHTML&lt;/code&gt; dari element dengan data berupa string yang telah di proses, disini saya mutasi array menggunakan fungsi &lt;code&gt;map&lt;/code&gt; untuk menerapkan index &amp;amp; penomoran dan fungsi &lt;code&gt;reduce&lt;/code&gt; untuk akumulasi string hasil pemrosesan data tiap object.&lt;/p&gt;
+&lt;p&gt;Ok, sebelum itu jika kalian belum tau tentang &lt;code&gt;reduce&lt;/code&gt;, ini adalah fungsi bawaan yang dimiliki tipe data array yang gunanya untuk akumulasi.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;...reduce((rawTemplate, obj) =&amp;gt; {
+  return rawTemplate += $el._$.replace(
+    interpolationRegex,
+    (match, group1) =&amp;gt; obj[group1.trim()] ?? match
+  )
+}, &#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nilai awal adalah sebuah string kosong yang kemudian di tiap perulangan kita lakukan &lt;em&gt;replace&lt;/em&gt; untuk mengganti syntax &lt;em&gt;interpolation&lt;/em&gt; dengan nilai yang sama yang ada di object jika tidak ada maka jangan replace, dalam kode diatas jika kita debug maka variabel &lt;code&gt;match&lt;/code&gt; akan berisi string &amp;quot;[title]&amp;quot; dan &lt;code&gt;group1&lt;/code&gt; berisi &amp;quot;title&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Saya juga menggunakan operator &lt;code&gt;??&lt;/code&gt; (null coalescing) agar object yang memiliki nilai 0 atau string kosong ikut ter-&lt;em&gt;replace&lt;/em&gt;.&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Skyblock Terraria Mobile 1.4</title>
+		<link href="https://bramaudi.github.io/skyblock-terraria-mobile-1.4/"/>
+		<updated>2022-01-24T10:14:50Z</updated>
+		<id>https://bramaudi.github.io/skyblock-terraria-mobile-1.4/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;https://bramaudi.github.io/static/images/terraria-skyblock.png&quot; alt=&quot;Terraria Skyblock&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;FAQ&lt;/h2&gt;
+&lt;p&gt;Apa pun yang tidak tercantum di bagian ini tidak dapat diperoleh karena berbagai alasan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;NPC - Guide, Merchant, Nurse, Demolitionist, Dye Trader, Zoologist,        Dryad, Painter, Arms Dealer, Clothier, Goblin Tinkerer, Tax Collector, Pirate, Wizard, Steampunker, Cyborg, Party Girl, Travelling/Skeleton Merchant&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bosses - King Slime, Eye of Cthulhu*, Skeletron*, Wall of Flesh, The Twins, The Destroyer ,Skeletron Prime, Plantera, Golem, Empress of Light, Lunatic Cultist, Moon Lord (*cuma bisa dikalahkan sekali)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Events - Blood Moon, Goblin Army, Slime Rain, Frost Legion, Solar Eclipse, Pirate Invasion, Martian Madness, Lunar Events&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Biomes - Forest, Corruption, Crimson, Jungle, Hallow (dan variasi Underground), Snow**&lt;br&gt;
+**Hanya pada sesi Natal&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Bagimana cara mendapat X&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Furnace&lt;/strong&gt; - Beli di Merchant pada Jungle Biome&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kolam Pancing&lt;/strong&gt; - Duplikat air dengan bucket, cari &lt;em&gt;iron ore&lt;/em&gt; dengan kalahkan slime&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bucket&lt;/strong&gt; - Farm slime untuk dapatkan 9 &lt;em&gt;iron ore&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mud&lt;/strong&gt; - Craft dari &lt;em&gt;dirt&lt;/em&gt; didekat air&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Snow&lt;/strong&gt; - Buka &lt;em&gt;presents&lt;/em&gt; di hardmode untuk dapatkan &lt;em&gt;snow globe&lt;/em&gt;, pakai event &lt;em&gt;frost legion&lt;/em&gt; untuk duplikasi&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Life Crystals&lt;/strong&gt; - &lt;em&gt;1/15 drop chance&lt;/em&gt; dari &lt;em&gt;gold&lt;/em&gt; dan &lt;em&gt;titanium crates&lt;/em&gt;. Disarankan mancing saat masih pre-hardmode&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dirt&lt;/strong&gt; - &lt;em&gt;Dirt bombs&lt;/em&gt; bisa dipakai untuk duplikat &lt;em&gt;dirt&lt;/em&gt;, modal 25 bisa untung sekitar 55 &lt;em&gt;dirt&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bomb&lt;/strong&gt; - Drop dari slime dengan rate sekitar 1.25%, atau bisa dibeli dari &lt;em&gt;skeleton merchant&lt;/em&gt;, dan &lt;em&gt;demolitionist&lt;/em&gt; kemudian&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grass Seed&lt;/strong&gt; - Mancing &lt;em&gt;jungle crates&lt;/em&gt; untuk dapat &lt;em&gt;staff of regrowth&lt;/em&gt; atau beli dari &lt;em&gt;dryad&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anvil&lt;/strong&gt; - Beli dari &lt;em&gt;merchant&lt;/em&gt; atau farm slime untuk dapat &lt;em&gt;iron&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Old Man/Devotees&lt;/strong&gt; - Bangun jembatan hingga ujung kanan biar si mbah bisa spawn (tanpa perlu atap)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dryad&lt;/strong&gt; - Kalahkan &lt;em&gt;Eye of Cthulhu&lt;/em&gt; atau &lt;em&gt;Skeletron&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bed&lt;/strong&gt; - Jalan satu-satunya cuma lewat event &lt;em&gt;pirate invasion&lt;/em&gt;, karena &lt;em&gt;cobwebs&lt;/em&gt; tidak ada&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Golem/Power Cells&lt;/strong&gt; - Pulau kecil terletak dibawah pada layer &lt;em&gt;cavern&lt;/em&gt; dengan &lt;em&gt;lihzahrd bricks/walls&lt;/em&gt; yang sudah ada disana. Berdiri pada &lt;em&gt;block&lt;/em&gt; yang telah disediakan pada &lt;em&gt;jungle biome&lt;/em&gt; sudah cukup untuk spawn &lt;em&gt;flying snakes&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Titanium Armour/Gear&lt;/strong&gt; - Tidak perlu &lt;em&gt;forge&lt;/em&gt; karena bisa dapat &lt;em&gt;titanium&lt;/em&gt; dan &lt;em&gt;adamantite bars&lt;/em&gt; dari &lt;em&gt;crate&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanical Skull/Skeletron Prime&lt;/strong&gt; - Harus farm musuh untuk dapatkan item summon (0.04% dari drop semua musuh di hardmode)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Arms Dealer&lt;/strong&gt; - &lt;em&gt;Boomstick&lt;/em&gt; dari &lt;em&gt;jungle crates&lt;/em&gt; atau &lt;em&gt;clockwork assault rifle&lt;/em&gt;/&lt;em&gt;red ryder&lt;/em&gt; dari &lt;em&gt;presents&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Crimson/Corruption/Hallow&lt;/strong&gt; - Transisi hardmode, &lt;em&gt;seeds&lt;/em&gt; bisa dibeli dari &lt;em&gt;dryad&lt;/em&gt; saat &lt;em&gt;bloodmoon&lt;/em&gt;/&lt;em&gt;graveyard&lt;/em&gt;, atau &lt;em&gt;evil seeds&lt;/em&gt; dari &lt;em&gt;Eye of Cthulhu&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Beberapa item kunci yang mustahil diperoleh&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stone&lt;/strong&gt; - Semua metode pembaruan hanya bisa jika sudah punya &lt;em&gt;stone&lt;/em&gt; (Catatan: &lt;em&gt;stone golems&lt;/em&gt; hanya bisa spawn diatas &lt;em&gt;stone&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sand&lt;/strong&gt; - Semua metode pembaruan hanya bisa jika sudah punya &lt;em&gt;sand&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Angler&lt;/strong&gt; - Harus punya &lt;em&gt;sand&lt;/em&gt; minimal 2 biji untuk bisa spawn&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bottles&lt;/strong&gt; - Tidak ada &lt;em&gt;sand&lt;/em&gt;, tidak ada &lt;em&gt;potions&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memancing di Lava&lt;/strong&gt; - &lt;em&gt;Hotline Fishing Hook&lt;/em&gt;/&lt;em&gt;Lavaproof Bugnet&lt;/em&gt;/&lt;em&gt;Lavaproof hook&lt;/em&gt; tidak bisa didapatkan tanpa &lt;em&gt;Angler&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chlorophyte Bars&lt;/strong&gt; - Tidak bisa dapat &lt;em&gt;Titanium Forge&lt;/em&gt; tanpa &lt;em&gt;Hellforge&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ectoplasm/Bones&lt;/strong&gt; - Tidak ada &lt;em&gt;Dungeon brick&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demon Altars&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hellforge&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Pertanyaan lainnya&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Saran armor terbaik?&lt;/strong&gt; - Sebelum lawan &lt;em&gt;moonlord&lt;/em&gt;, armor terbaik hanya &lt;em&gt;hallowed&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cara unduh/mainkan map?&lt;/strong&gt; - Unduh world mode &lt;a href=&quot;https://bramaudi.github.io/static/files/Skyblock-Expert.wld&quot;&gt;Expert&lt;/a&gt; / &lt;a href=&quot;https://bramaudi.github.io/static/files/Skyblock-Journey.wld&quot;&gt;Journey&lt;/a&gt; lalu pindah ke...&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;sdcard
+├── Android
+    ├── data
+        ├── com.and.games505.TerrariaPaid
+            ├── Worlds
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...dan selesai.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cara summon Wall Of Flesh?&lt;/strong&gt; - Lava hanya bisa didapatkan saat membunuh lava slime (wajib mode expert+), &lt;em&gt;Guide Voodoo Dolls&lt;/em&gt; dari &lt;em&gt;Voodoo Demons&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;quot;Kenapa pohon saya lama tumbuhnya&amp;quot;&lt;/strong&gt; - Pohon butuh 3 blok rumput di kedua sisi untuk tumbuh, dan tanpa atap. Jika memang tidak kunjung tumbuh berarti memang belum beruntung, sabar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Wall of Flesh ngebug&lt;/strong&gt; - Bangun atap setebal 2 blok untuk menutupi &lt;em&gt;hell&lt;/em&gt; agar &lt;em&gt;Wall of Flesh&lt;/em&gt; tidak memanjang keatas&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bulb dihancurkan tapi Plantera tidak spawn&lt;/strong&gt; - Ini karena masalah kekurangan blok &lt;em&gt;off-screen&lt;/em&gt;. Coba perluas blok yang tidak terjangkau kamera/pandangan.&lt;/p&gt;
+&lt;p&gt;Catatan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sangat disarankan membangun jembatan sepanjang &lt;em&gt;world&lt;/em&gt; untuk mencegah spawn pillar ngebug.&lt;/li&gt;
+&lt;li&gt;Sebaiknya farm beberapa &lt;em&gt;mechanical skull&lt;/em&gt; sebelum mengalahkan &lt;em&gt;skeletron prime&lt;/em&gt;, karena sesudah itu tidak akan bisa lagi drop item summon dari musuh dan mustahil untuk summon lagi. Hanya ini &lt;em&gt;mech summon&lt;/em&gt; yang tidak bisa dicraf karena tidak adanya &lt;em&gt;bone&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Belum bisa dimainkan di console.&lt;/li&gt;
+&lt;li&gt;Tidak bisa dimainkan di normal mode, karena &lt;em&gt;lava slime&lt;/em&gt; tidak mengeluarkan lava yang mana wajib untuk proses summon &lt;em&gt;Wall of Flesh&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;King Slime&lt;/em&gt; hanya bisa spawn secara alami pada blok rumput offscreen (diujung &lt;em&gt;world&lt;/em&gt; dekat pantai)&lt;/li&gt;
+&lt;li&gt;Jika kamu tidak suka memancing maka tidak disarankan memainkan tapi jika kamu memancing untuk &lt;em&gt;golden crate&lt;/em&gt; maka trik seperti mencadangkan/memulihkan &lt;em&gt;world&lt;/em&gt; akan sangat berguna untuk mendapatkan &lt;em&gt;life crystal&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content>
+	</entry>
+	<entry>
+		<title>Cara Symlink pada Shared Hosting</title>
+		<link href="https://bramaudi.github.io/cara-symlink-pada-shared-hosting/"/>
+		<updated>2021-12-04T02:42:24Z</updated>
+		<id>https://bramaudi.github.io/cara-symlink-pada-shared-hosting/</id>
+		<content type="html">&lt;p&gt;Hari ini saya mencoba deploy project Laravel ke sebuah shared hosting dengan fitur yang terbatas, apalagi tidak tersedia nya akses SSH yang mana sangat penting untuk aplikasi seperti Laravel.&lt;/p&gt;
+&lt;p&gt;Beruntung kita masih bisa memakai sebuah trik untuk menjalankan perintah &lt;strong&gt;symlink&lt;/strong&gt; dengan memanfaatkan fitur &lt;strong&gt;Cron Jobs&lt;/strong&gt; di shared hosting, dalam kasus saya adalah CPanel, karena tidak pernah pakai Cron Jobs ini saya jadi baru tau 😂.&lt;/p&gt;
+&lt;p&gt;Langkah selanjutnya Anda tinggal membuat sebuah jadwal apa saja dengan waktu yang paling singkat, pilih saja &lt;strong&gt;per-1 menit&lt;/strong&gt; lalu masukkan perintah terminal misalnya saja saya akan menghubungkan &lt;code&gt;storage/app/public&lt;/code&gt; ke &lt;code&gt;public/storage&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Maka ketik perintah seperti berikut:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;ln -s /home/&amp;lt;username&amp;gt;/&amp;lt;laravel&amp;gt;/storage/app/public /home/&amp;lt;username&amp;gt;/&amp;lt;public&amp;gt;/storage
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ganti &lt;code&gt;&amp;lt;username&amp;gt;&lt;/code&gt; dengan nama pengguna hosting yang biasa digunakan untuk login, ganti &lt;code&gt;&amp;lt;laravel&amp;gt;&lt;/code&gt; dengan nama folder yang menyimpan berkas pribadi laravel, dan ganti &lt;code&gt;&amp;lt;public&amp;gt;&lt;/code&gt; dengan nama folder utama hosting, biasanya bernama &lt;code&gt;public_html&lt;/code&gt;, &lt;code&gt;www&lt;/code&gt;, atau &lt;code&gt;htdocs&lt;/code&gt;.&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Deploy Laravel ke Shared Hosting</title>
+		<link href="https://bramaudi.github.io/deploy-laravel-ke-shared-hosting/"/>
+		<updated>2021-12-04T02:40:28Z</updated>
+		<id>https://bramaudi.github.io/deploy-laravel-ke-shared-hosting/</id>
+		<content type="html">&lt;p&gt;Laravel adalah salah satu Framework PHP paling populer, penggunaan Laravel sebagian besar ditangani oleh perintah bash yang Anda jalankan di terminal, itu disebut &lt;code&gt;artisan&lt;/code&gt;, Anda dapat dengan mudah membuat pengontrol, model basis data, dll.&lt;/p&gt;
+&lt;p&gt;Tapi bagaimana jika kita ingin men-deploy project semacam ini ke server dengan fitur terbatas seperti CPanel atau Shared Hosting? bisa sih tapi agak ribet, singkatnya kita tinggal pisahkan folder &lt;strong&gt;public&lt;/strong&gt; dengan seluruh file project Laravel lalu perbaiki path di codenya, yang utama folder public diperlihatkan ke visitor dan selebihnya berada di suatu tempat yang tidak dapat diakses oleh pengunjung.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;MyApp
+├── app
+├── bootstrap
+├── config
+├── database
+├── public
+├── resources
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Langkah - langkah&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Buat folder baru dengan nama apa saja, misalnya kita menggunakan &lt;code&gt;laravel&lt;/code&gt; lalu pindahkan seluruh file kecuali folder &lt;code&gt;public&lt;/code&gt; ke folder &lt;code&gt;laravel&lt;/code&gt; yang baru saja kita buat.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ganti nama nama folder publik Anda agar sesuai dengan nama direktori publik server, kebanyakan bernama &lt;code&gt;public_html&lt;/code&gt; dan terkadang &lt;code&gt;htdocs&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Buka file &lt;code&gt;index.php&lt;/code&gt; di dalam folder publik kemudian perbaiki path dengan mengganti dari &lt;code&gt;/../&lt;/code&gt; menjadi &lt;code&gt;/../laravel/&lt;/code&gt;, perhatikan bahwa folder &lt;code&gt;laravel&lt;/code&gt; adalah folder yang sama dengan yang sudah kita buat sebelumnya di Langkah 1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Itu saja, sudah selesai. Jangan lupa untuk mengkonfigurasi file &lt;code&gt;.env&lt;/code&gt;.&lt;/p&gt;</content>
+	</entry>
+	<entry>
+		<title>Membuat jQuery Sendiri</title>
+		<link href="https://bramaudi.github.io/membuat-jquery-sendiri/"/>
+		<updated>2021-08-20T00:00:00Z</updated>
+		<id>https://bramaudi.github.io/membuat-jquery-sendiri/</id>
+		<content type="html">&lt;p&gt;Hingga saat ini JavaScript dan komunitasnya sudah sangat berkembang pesat, menjangkau pasar yang lebih luas. Saking rame-nya sekarang untuk sekedar memulai belajar saja sudah dibikin bingung oleh banyaknya framework/library Javascript yang bejibun.&lt;/p&gt;
+&lt;p&gt;Saya sampe bingung dulu waktu pertama kali belajar Javascript, seperti yang kita ketahui untuk framework/library ada yang namanya React, Svelte, Vue, Angular, dan sisanya masih banyak lagi dan terus bermunculan tiap waktu.&lt;/p&gt;
+&lt;p&gt;Kembali mengingat dulu yang ada dan yang saya dengar cuma jQuery aja, beliau adalah sang library legendaris yaitu &lt;strong&gt;jQuery&lt;/strong&gt;, Yah memang jaman dulu setiap cari keyword tentang Javascript selalu yang muncul adalah versi jQuery-nya, bayangin yang nanya di Stackoverflow tentang vanilla js eh dijawab pake jQuery wkwk.&lt;/p&gt;
+&lt;p&gt;Namun sekarang API bawaan Javascript sudah jauh berkembang, kita seharusnya sudah tidak perlu pakai jQuery lagi (kalau bisa), nah terus gimana dengan nasib project2 jaman batu apakah harus rewrite? Oh tentu saja &lt;strong&gt;Tidak perlu&lt;/strong&gt;, tapi kalau mau &lt;em&gt;lebih bagus&lt;/em&gt; (menurut saya) sih!&lt;/p&gt;
+&lt;p&gt;Mayoritas pengguna / end-user biasanya juga tidak akan memperdulikan stack yang digunakan website tersebut bahkan saya sendiri pun juga begitu, asal gak lemot aja gak masalah sih.&lt;/p&gt;
+&lt;p&gt;Berikut beberapa &lt;strong&gt;kelebihan&lt;/strong&gt; dan &lt;strong&gt;kekurangan&lt;/strong&gt; dalam penggunaan jQuery di 2021 kedepan yang coba saya tangkap:&lt;/p&gt;
+&lt;h3&gt;Kelebihan&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Masih banyak project yang menggunakan = Peluang cuan masih banyak&lt;/li&gt;
+&lt;li&gt;Kompatibel dengan browser lama&lt;/li&gt;
+&lt;li&gt;Mempermudah manipulasi DOM untuk website MPA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Kekurangan&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Ketinggalan jaman, jika target market-nya adalah modern browser&lt;/li&gt;
+&lt;li&gt;Ukuran lumayan dipertimbangkan secara API native sudah banyak didukung&lt;/li&gt;
+&lt;li&gt;Penggunaan hanya untuk Multi Page App, meski bisa sih digabung dengan yang lain di SPA tapi ngapain?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jika anda  baru mulai belajar saya sarankan pelajari tentang Vanilla JS / pure javascript sebagai pondasi dasar dengan begitu kita akan lebih mudah menaklukkan banyak framework diluar sana.&lt;/p&gt;
+&lt;p&gt;Saya sejak awal dulu sudah sedikit demi sedikit &lt;a href=&quot;http://youmightnotneedjquery.com/&quot;&gt;move on dari jQuery&lt;/a&gt; dan lebih mempelajari Vanilla JS.&lt;/p&gt;
+&lt;p&gt;Oh iya, ada tips sih kalau kita ingin optimasi projek yang masih pakai jQuery untuk memangkas bundle jQuery jika target user adalah browser modern misalnya dengan menggunakan &lt;a href=&quot;https://github.com/fabiospampinato/cash&quot;&gt;library alternatif&lt;/a&gt; atau bahkan kita bisa rewrite sendiri kalau mau.&lt;/p&gt;
+&lt;h2&gt;Membuat jQuery&lt;/h2&gt;
+&lt;p&gt;Ok saya akan coba mengulik bagaimana kita bisa membuat jQuery kita sendiri yang lebih kecil ukurannya.&lt;/p&gt;
+&lt;h3&gt;Selector&lt;/h3&gt;
+&lt;p&gt;Alasan utama saya dulu menggunakan javascript hanya karena suka dengan sistem selektor-nya saja, hanya dengan pola &lt;code&gt;$(selector-css)&lt;/code&gt; saya bisa dengan mudah untuk memanipulasi DOM.&lt;/p&gt;
+&lt;p&gt;Namun saat ini sudah ada API javascript native yang fungsinya sama dengan Selector kepunyaan jQuery tadi yaitu &lt;code&gt;querySelector&lt;/code&gt; dan &lt;code&gt;querySelectorAll&lt;/code&gt; , dengan ini saya bisa membuat selektor jQuery hanya dengan 1 baris kode seperti ini;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const $ = (q) =&amp;gt; document.querySelectorAll(q)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Perbedaan &lt;code&gt;querySelector&lt;/code&gt; dan &lt;code&gt;querySelectorAll&lt;/code&gt; hanya ada pada bentuk hasilnya saja yakni jika menggunakan &lt;code&gt;querySelectorAll&lt;/code&gt; meski kita mencari selector id tetap akan menghasilkan array.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;const app = $(&#39;#app&#39;)
+console.log(app) // hasil: NodeList [ h2#selector ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Helper&lt;/h3&gt;
+&lt;p&gt;Lalu bagaimana dengan fungsi² lainnya semisal &lt;code&gt;hide()&lt;/code&gt;, &lt;code&gt;addClass()&lt;/code&gt;, &lt;code&gt;removeClass()&lt;/code&gt; dan seterusnya ... ? Supaya bisa tambahin fungsi seperti ini kita rombak dulu kode sebelumnya menjadi sebuah function, sebenarnya bisa di tulis sebagai Class tapi saya akan tulis sebagai function aja ya;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;function myjquery(selector) {
+  const elements = document.querySelectorAll(selector)
+  elements.forEach((node, index) =&amp;gt; this[index] = node)
+  // bisa juga menggunakan for loop untuk performa lebih
+  this.length = elements.length
+}
+
+const $ = x =&amp;gt; new myjquery(x)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Saya mencontoh hasil return dari jQuery untuk fungsi &lt;code&gt;myjquery&lt;/code&gt; diatas, jadi nanti kalau kita panggil doi dia akan return sebuah objek yang memiliki 1 properti statik yaitu &lt;code&gt;length&lt;/code&gt; dan sisanya properti dinamis, seperti ini;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;ul&amp;gt;
+  &amp;lt;li class=&amp;quot;one&amp;quot;&amp;gt;Satu&amp;lt;/li&amp;gt;
+  &amp;lt;li class=&amp;quot;two&amp;quot;&amp;gt;Dua&amp;lt;/li&amp;gt;
+  &amp;lt;li class=&amp;quot;three&amp;quot;&amp;gt;Tiga&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;console.log($(&#39;li&#39;))
+// hasil:
+// Object { 0: li.one, 1: li.two, 2: li.three, length: 3 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Selanjutnya kita bikin method nya, karena kita pakai gaya function bukan class jadi kita akan menggunakan &lt;code&gt;Function.prototype&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;function myjquery(selector) {
+  const elements = document.querySelectorAll(selector)
+  elements.forEach((node, index) =&amp;gt; this[index] = node)
+  // bisa juga menggunakan for loop untuk performa lebih
+  this.length = elements.length
+}
+
+// tambah atribut class pada tiap elemen
+myjquery.prototype.addClass = function(str) {
+  for (let i = 0; i &amp;lt; this.length; i++) {
+	this[i].classList.add(str)
+  }
+  return this
+}
+
+// jika param kosong maka jadi getter jika tidak maka setter
+myjquery.prototype.text = function (str = undefined) {
+  let texts = []
+  for (let i = 0; i &amp;lt; this.length; i++) {
+    if (str) this[i].innerText = str
+    else texts.push(this[i].innerText)
+  }
+  return str ? this : texts
+}
+
+const $ = x =&amp;gt; new myjquery(x)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Penggunaan juga relatif mudah karena memang sangat familiar dengan syntax jQuery bahkan lebih baik, contohnya saja pada fungsi &lt;code&gt;text&lt;/code&gt;, kalau di jQuery saat kita query beberapa element dan pakai method &lt;code&gt;text&lt;/code&gt; ini untuk mendapatkan konten text didalam tiap element maka hasilnya adalah string yang tersambung-sambung, kalau dengan kode diatas hasilnya akan berupa array.&lt;/p&gt;
+&lt;p&gt;Secara keseluruhan hanya seperti itu saja bentuk jQuery racikan sendiri, kurang sedap ya tambahin bumbu sendiri sesuai selera karena memang masih banyak method yang harus ditambahkan kalau kita mau, atau bahkan saya kepikiran ini bisa juga dibuat modular dimana kita bisa pilih mana aja yang akan dipakai jadi akan memangkas bundle lebih banyak macam three-shaking gitu lah.&lt;/p&gt;</content>
+	</entry>
+</feed>

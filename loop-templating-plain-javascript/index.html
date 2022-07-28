@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Templating Plain Javascript</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <meta name="description" content="I am person that write stuff.">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fontbit.io/css2?family=Inter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="bramaudi.dev">
+    <link rel="alternate" href="/feed.json" type="application/json" title="bramaudi.dev">
+    <script type="module" src="/js/main.js"></script>
+  </head>
+  <body>
+    <div class="radial-gradient"></div>
+    <header>
+      <a href="/">bramaudi.dev</a>
+      <nav>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown__wrapper" tabindex="1">
+            <div class="nav-dropdown__button">
+              Menu
+              <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="32" height="32" preserveaspectratio="xMidYMid meet" viewbox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="m112 184l144 144l144-144"></path></svg>
+            </div>
+            <div class="nav-dropdown__content">
+              <a href="/">
+                Home
+              </a>
+              <a href="/posts/">
+                Archive
+              </a>
+              <a href="/about/">
+                About Me
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-search" tabindex="-1">
+          <button class="nav-search__button">
+            <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="32" height="32" preserveaspectratio="xMidYMid meet" viewbox="0 0 512 512"><path fill="currentColor" d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3ZM97.92 222.72a124.8 124.8 0 1 1 124.8 124.8a124.95 124.95 0 0 1-124.8-124.8Z"></path></svg>
+          </button>
+          <div class="nav-search__content">
+            <oom-search label="Search" placeholder="Post title or tag" src="/search.json"></oom-search>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <main class="body-post">
+        <link rel="stylesheet" href="/prism.css">
+<link href="https://fontbit.io/css2?family=IBM+Plex+Mono:ital@0;1&amp;display=swap" rel="stylesheet">
+<section>
+	<article class="post">
+		<h2 class="title">Loop Templating Plain Javascript</h2>
+		<div class="meta">
+			<time datetime="2022-02-08 17:02:27">
+        February 8th, 2022
+      </time>
+			<div class="tags">
+      
+        <a href="/tags/javascript/">javascript</a>
+      
+			</div>
+		</div>
+		<div class="content">
+			<p>Melakukan loop data pada template tanpa menggunakan framework perlu sedikit trik karena jika dengan framework tentu sudah ada mekanisme dari tiap framework itu sendiri namun jika murni javascript kita harus membuat mekanisme sendiri.</p>
+<p>Berikut ini implementasi yang sering saya gunakan, biasanya kasus penggunaan untuk pembuatan fungsi pencarian pada <em>Static Site Generator</em> karena terlalu overkill jika saya pakai framework.</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token comment">/**
+* Loop Templating
+* @param {Array&lt;{ [key: string]: unknown }&gt;} data
+*/</span>
+<span class="token keyword">function</span> <span class="token function">maplist</span><span class="token punctuation">(</span><span class="token parameter">$el<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> interpolationRegex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\[([\w]+)\]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span> <span class="token comment">// usage: [title]</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">num</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>i<span class="token punctuation">,</span> <span class="token literal-property property">n</span><span class="token operator">:</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">...</span>item<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	
+  $el<span class="token punctuation">.</span>_$ <span class="token operator">=</span> $el<span class="token punctuation">.</span>_$ <span class="token operator">||</span> $el<span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
+  $el<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+	
+  $el<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">rawTemplate<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> rawTemplate <span class="token operator">+=</span> $el<span class="token punctuation">.</span>_$<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>
+      interpolationRegex<span class="token punctuation">,</span>
+      <span class="token punctuation">(</span><span class="token parameter">match<span class="token punctuation">,</span> group1</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> obj<span class="token punctuation">[</span>group1<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">??</span> match
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Lihat pada <a href="https://gist.github.com/bramaudi/3011b94652a014667dbd5be0d36e5f63">gist</a>.</p>
+<h2>Contoh Penggunaan</h2>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animelist<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-[i]<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>[n]. [name]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token function">maplist</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'animelist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Attack On Titan'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Jojo Bizzare Adventure'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'One Piece'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Naruto'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Hasilnya:</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animelist<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1. Attack On Titan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2. Jojo Bizzare Adventure<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3. One Piece<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>4. Naruto<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h2>Penjelasan</h2>
+<p>Pertama saya mendeklarasi syntax <em>interpolation</em> dengan menggunakan <em>Regex</em>:</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> interpolationRegex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\[([\w]+)\]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span> <span class="token comment">// usage: [title]</span>
+</code></pre>
+<p>Ini bisa kita custom jika mau, misalnya saja untuk menghindari benturan dengan template engine dari server, butuh sedikit pengetahuan tentang regex.</p>
+<p>Lalu saya juga melakukan mutasi pada array untuk menambahkan informasi index &amp; penomoran yang nantinya bisa kita akses dengan <code>[i]</code> untuk index dan <code>[n]</code> untuk penomoran:</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">num</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>i<span class="token punctuation">,</span> <span class="token literal-property property">n</span><span class="token operator">:</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">...</span>item<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<p>Selanjutnya kita bahas fungsi utama tentang manipulasi DOM, pertama saat pertama kali fungsi <code>maplist</code> dimuat kita ambil <code>innerHTML</code> dari element yang bersangkutan kemudian menyimpannya didalam sebuah property didalam element itu sendiri, dalam kasus ini element adalah <code>$el</code> dan nama property-nya adalah <code>_$</code> (sebenarnya terserah namun untuk penyingkatan saja)...</p>
+<pre class="language-js" tabindex="0"><code class="language-js">$el<span class="token punctuation">.</span>_$ <span class="token operator">=</span> $el<span class="token punctuation">.</span>_$ <span class="token operator">||</span> $el<span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
+</code></pre>
+<p>...kemudian setelah string template sudah kita simpan langkah selanjutnya adalah membersihkan <em>children</em>...</p>
+<pre class="language-js" tabindex="0"><code class="language-js">$el<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+</code></pre>
+<p>...agar template mentah kita tidak tampil, atau dalam kasus lain kita juga bisa menggantinya dengan template untuk tampilan state kosong seperti "<em>Daftar masih kosong</em>" misalnya.</p>
+<hr>
+<p>Terakhir adalah proses <em>render</em> data dengan mengembalikan nilai <code>innerHTML</code> dari element dengan data berupa string yang telah di proses, disini saya mutasi array menggunakan fungsi <code>map</code> untuk menerapkan index &amp; penomoran dan fungsi <code>reduce</code> untuk akumulasi string hasil pemrosesan data tiap object.</p>
+<p>Ok, sebelum itu jika kalian belum tau tentang <code>reduce</code>, ini adalah fungsi bawaan yang dimiliki tipe data array yang gunanya untuk akumulasi.</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token operator">...</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">rawTemplate<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> rawTemplate <span class="token operator">+=</span> $el<span class="token punctuation">.</span>_$<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>
+    interpolationRegex<span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token parameter">match<span class="token punctuation">,</span> group1</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> obj<span class="token punctuation">[</span>group1<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">??</span> match
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Nilai awal adalah sebuah string kosong yang kemudian di tiap perulangan kita lakukan <em>replace</em> untuk mengganti syntax <em>interpolation</em> dengan nilai yang sama yang ada di object jika tidak ada maka jangan replace, dalam kode diatas jika kita debug maka variabel <code>match</code> akan berisi string "[title]" dan <code>group1</code> berisi "title".</p>
+<p>Saya juga menggunakan operator <code>??</code> (null coalescing) agar object yang memiliki nilai 0 atau string kosong ikut ter-<em>replace</em>.</p>
+
+        <hr>
+
+        <nav>
+          <ul>
+            <li>
+              <strong>← Previous</strong>
+              <a href="/skyblock-terraria-mobile-1.4/" rel="prev">Skyblock Terraria Mobile 1.4</a>
+            </li>
+            
+            <li>
+              <strong>Next →</strong>
+              <a href="/format-codec-audio-video-untuk-whatsapp/" rel="next">Format Codec Audio/Video Untuk Whatsapp</a>
+            </li>
+            
+          </ul>
+        </nav>
+		</div>
+	</article>
+</section>
+
+      </main>
+      <aside>
+	
+	
+
+	<section class="profile">
+	  <div class="pic">
+		<img src="/static/bramaudi.jpg">
+		<div class="title">Brama Udi</div>
+	  </div>
+	  <div class="info">
+		Seorang kuli &amp; penikmat kopi, suka menggambar pixelart, bisa ngetik, bisa pemrogramman (web), bisa desain, bisa mencintaimu dengan apa adanya tanpa kenal lelah.
+	  </div>
+	</section>
+</aside>
+    </div>
+
+    <footer>© 2022 Brama Udi</footer>
+
+    <!-- Current page: /loop-templating-plain-javascript/ -->
+  
+
+</body></html>

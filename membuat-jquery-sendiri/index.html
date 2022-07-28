@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membuat jQuery Sendiri</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <meta name="description" content="I am person that write stuff.">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fontbit.io/css2?family=Inter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="bramaudi.dev">
+    <link rel="alternate" href="/feed.json" type="application/json" title="bramaudi.dev">
+    <script type="module" src="/js/main.js"></script>
+  </head>
+  <body>
+    <div class="radial-gradient"></div>
+    <header>
+      <a href="/">bramaudi.dev</a>
+      <nav>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown__wrapper" tabindex="1">
+            <div class="nav-dropdown__button">
+              Menu
+              <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="32" height="32" preserveaspectratio="xMidYMid meet" viewbox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="m112 184l144 144l144-144"></path></svg>
+            </div>
+            <div class="nav-dropdown__content">
+              <a href="/">
+                Home
+              </a>
+              <a href="/posts/">
+                Archive
+              </a>
+              <a href="/about/">
+                About Me
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-search" tabindex="-1">
+          <button class="nav-search__button">
+            <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="32" height="32" preserveaspectratio="xMidYMid meet" viewbox="0 0 512 512"><path fill="currentColor" d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3ZM97.92 222.72a124.8 124.8 0 1 1 124.8 124.8a124.95 124.95 0 0 1-124.8-124.8Z"></path></svg>
+          </button>
+          <div class="nav-search__content">
+            <oom-search label="Search" placeholder="Post title or tag" src="/search.json"></oom-search>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <main class="body-post">
+        <link rel="stylesheet" href="/prism.css">
+<link href="https://fontbit.io/css2?family=IBM+Plex+Mono:ital@0;1&amp;display=swap" rel="stylesheet">
+<section>
+	<article class="post">
+		<h2 class="title">Membuat jQuery Sendiri</h2>
+		<div class="meta">
+			<time datetime="2021-08-20 00:00:00">
+        August 20th, 2021
+      </time>
+			<div class="tags">
+      
+        <a href="/tags/javascript/">javascript</a>
+      
+			</div>
+		</div>
+		<div class="content">
+			<p>Hingga saat ini JavaScript dan komunitasnya sudah sangat berkembang pesat, menjangkau pasar yang lebih luas. Saking rame-nya sekarang untuk sekedar memulai belajar saja sudah dibikin bingung oleh banyaknya framework/library Javascript yang bejibun.</p>
+<p>Saya sampe bingung dulu waktu pertama kali belajar Javascript, seperti yang kita ketahui untuk framework/library ada yang namanya React, Svelte, Vue, Angular, dan sisanya masih banyak lagi dan terus bermunculan tiap waktu.</p>
+<p>Kembali mengingat dulu yang ada dan yang saya dengar cuma jQuery aja, beliau adalah sang library legendaris yaitu <strong>jQuery</strong>, Yah memang jaman dulu setiap cari keyword tentang Javascript selalu yang muncul adalah versi jQuery-nya, bayangin yang nanya di Stackoverflow tentang vanilla js eh dijawab pake jQuery wkwk.</p>
+<p>Namun sekarang API bawaan Javascript sudah jauh berkembang, kita seharusnya sudah tidak perlu pakai jQuery lagi (kalau bisa), nah terus gimana dengan nasib project2 jaman batu apakah harus rewrite? Oh tentu saja <strong>Tidak perlu</strong>, tapi kalau mau <em>lebih bagus</em> (menurut saya) sih!</p>
+<p>Mayoritas pengguna / end-user biasanya juga tidak akan memperdulikan stack yang digunakan website tersebut bahkan saya sendiri pun juga begitu, asal gak lemot aja gak masalah sih.</p>
+<p>Berikut beberapa <strong>kelebihan</strong> dan <strong>kekurangan</strong> dalam penggunaan jQuery di 2021 kedepan yang coba saya tangkap:</p>
+<h3>Kelebihan</h3>
+<ul>
+<li>Masih banyak project yang menggunakan = Peluang cuan masih banyak</li>
+<li>Kompatibel dengan browser lama</li>
+<li>Mempermudah manipulasi DOM untuk website MPA</li>
+</ul>
+<h3>Kekurangan</h3>
+<ul>
+<li>Ketinggalan jaman, jika target market-nya adalah modern browser</li>
+<li>Ukuran lumayan dipertimbangkan secara API native sudah banyak didukung</li>
+<li>Penggunaan hanya untuk Multi Page App, meski bisa sih digabung dengan yang lain di SPA tapi ngapain?</li>
+</ul>
+<p>Jika anda  baru mulai belajar saya sarankan pelajari tentang Vanilla JS / pure javascript sebagai pondasi dasar dengan begitu kita akan lebih mudah menaklukkan banyak framework diluar sana.</p>
+<p>Saya sejak awal dulu sudah sedikit demi sedikit <a href="http://youmightnotneedjquery.com/">move on dari jQuery</a> dan lebih mempelajari Vanilla JS.</p>
+<p>Oh iya, ada tips sih kalau kita ingin optimasi projek yang masih pakai jQuery untuk memangkas bundle jQuery jika target user adalah browser modern misalnya dengan menggunakan <a href="https://github.com/fabiospampinato/cash">library alternatif</a> atau bahkan kita bisa rewrite sendiri kalau mau.</p>
+<h2>Membuat jQuery</h2>
+<p>Ok saya akan coba mengulik bagaimana kita bisa membuat jQuery kita sendiri yang lebih kecil ukurannya.</p>
+<h3>Selector</h3>
+<p>Alasan utama saya dulu menggunakan javascript hanya karena suka dengan sistem selektor-nya saja, hanya dengan pola <code>$(selector-css)</code> saya bisa dengan mudah untuk memanipulasi DOM.</p>
+<p>Namun saat ini sudah ada API javascript native yang fungsinya sama dengan Selector kepunyaan jQuery tadi yaitu <code>querySelector</code> dan <code>querySelectorAll</code> , dengan ini saya bisa membuat selektor jQuery hanya dengan 1 baris kode seperti ini;</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">$</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">q</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+</code></pre>
+<p>Perbedaan <code>querySelector</code> dan <code>querySelectorAll</code> hanya ada pada bentuk hasilnya saja yakni jika menggunakan <code>querySelectorAll</code> meski kita mencari selector id tetap akan menghasilkan array.</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span> <span class="token comment">// hasil: NodeList [ h2#selector ]</span>
+</code></pre>
+<h3>Helper</h3>
+<p>Lalu bagaimana dengan fungsi² lainnya semisal <code>hide()</code>, <code>addClass()</code>, <code>removeClass()</code> dan seterusnya ... ? Supaya bisa tambahin fungsi seperti ini kita rombak dulu kode sebelumnya menjadi sebuah function, sebenarnya bisa di tulis sebagai Class tapi saya akan tulis sebagai function aja ya;</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">function</span> <span class="token function">myjquery</span><span class="token punctuation">(</span><span class="token parameter">selector</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span>
+  elements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> node<span class="token punctuation">)</span>
+  <span class="token comment">// bisa juga menggunakan for loop untuk performa lebih</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> elements<span class="token punctuation">.</span>length
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">$</span> <span class="token operator">=</span> <span class="token parameter">x</span> <span class="token operator">=&gt;</span> <span class="token keyword">new</span> <span class="token class-name">myjquery</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</code></pre>
+<p>Saya mencontoh hasil return dari jQuery untuk fungsi <code>myjquery</code> diatas, jadi nanti kalau kita panggil doi dia akan return sebuah objek yang memiliki 1 properti statik yaitu <code>length</code> dan sisanya properti dinamis, seperti ini;</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>one<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Satu<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>two<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Dua<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>three<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tiga<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<pre class="language-js" tabindex="0"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// hasil:</span>
+<span class="token comment">// Object { 0: li.one, 1: li.two, 2: li.three, length: 3 }</span>
+</code></pre>
+<p>Selanjutnya kita bikin method nya, karena kita pakai gaya function bukan class jadi kita akan menggunakan <code>Function.prototype</code>.</p>
+<pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">function</span> <span class="token function">myjquery</span><span class="token punctuation">(</span><span class="token parameter">selector</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span>
+  elements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> node<span class="token punctuation">)</span>
+  <span class="token comment">// bisa juga menggunakan for loop untuk performa lebih</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> elements<span class="token punctuation">.</span>length
+<span class="token punctuation">}</span>
+
+<span class="token comment">// tambah atribut class pada tiap elemen</span>
+myjquery<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">addClass</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token keyword">this</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// jika param kosong maka jadi getter jika tidak maka setter</span>
+myjquery<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">text</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">str <span class="token operator">=</span> <span class="token keyword">undefined</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> texts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>innerText <span class="token operator">=</span> str
+    <span class="token keyword">else</span> texts<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>innerText<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> str <span class="token operator">?</span> <span class="token keyword">this</span> <span class="token operator">:</span> texts
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">$</span> <span class="token operator">=</span> <span class="token parameter">x</span> <span class="token operator">=&gt;</span> <span class="token keyword">new</span> <span class="token class-name">myjquery</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</code></pre>
+<p>Penggunaan juga relatif mudah karena memang sangat familiar dengan syntax jQuery bahkan lebih baik, contohnya saja pada fungsi <code>text</code>, kalau di jQuery saat kita query beberapa element dan pakai method <code>text</code> ini untuk mendapatkan konten text didalam tiap element maka hasilnya adalah string yang tersambung-sambung, kalau dengan kode diatas hasilnya akan berupa array.</p>
+<p>Secara keseluruhan hanya seperti itu saja bentuk jQuery racikan sendiri, kurang sedap ya tambahin bumbu sendiri sesuai selera karena memang masih banyak method yang harus ditambahkan kalau kita mau, atau bahkan saya kepikiran ini bisa juga dibuat modular dimana kita bisa pilih mana aja yang akan dipakai jadi akan memangkas bundle lebih banyak macam three-shaking gitu lah.</p>
+
+        <hr>
+
+        <nav>
+          <ul>
+            <li>
+              <strong>Next →</strong>
+              <a href="/deploy-laravel-ke-shared-hosting/" rel="next">Deploy Laravel ke Shared Hosting</a>
+            </li>
+            
+          </ul>
+        </nav>
+		</div>
+	</article>
+</section>
+
+      </main>
+      <aside>
+	
+	
+
+	<section class="profile">
+	  <div class="pic">
+		<img src="/static/bramaudi.jpg">
+		<div class="title">Brama Udi</div>
+	  </div>
+	  <div class="info">
+		Seorang kuli &amp; penikmat kopi, suka menggambar pixelart, bisa ngetik, bisa pemrogramman (web), bisa desain, bisa mencintaimu dengan apa adanya tanpa kenal lelah.
+	  </div>
+	</section>
+</aside>
+    </div>
+
+    <footer>© 2022 Brama Udi</footer>
+
+    <!-- Current page: /membuat-jquery-sendiri/ -->
+  
+
+</body></html>
