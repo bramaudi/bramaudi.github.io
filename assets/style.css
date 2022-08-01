@@ -198,6 +198,8 @@ footer {
 }
 
 .publication-teaser img {
+    width: 100px;
+    height: 100px;
     margin: 0;
     border: 1px solid var(--border)
 }
