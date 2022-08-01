@@ -4,7 +4,8 @@ date: 2022-01-24 10:14:50
 tags: terraria
 ---
 
-![Terraria Skyblock](/static/images/terraria-skyblock.png)
+![Terraria Skyblock](/assets/images/terraria-skyblock.png)
+
 ## FAQ
 Apa pun yang tidak tercantum di bagian ini tidak dapat diperoleh karena berbagai alasan:
 
@@ -54,7 +55,7 @@ Apa pun yang tidak tercantum di bagian ini tidak dapat diperoleh karena berbagai
 
 **Saran armor terbaik?** - Sebelum lawan *moonlord*, armor terbaik hanya *hallowed*
 
-**Cara unduh/mainkan map?** - Unduh world mode [Expert](/static/files/Skyblock-Expert.wld) / [Journey](/static/files/Skyblock-Journey.wld) lalu pindah ke...
+**Cara unduh/mainkan map?** - Unduh world mode [Expert](/assets/files/Skyblock-Expert.wld) / [Journey](/assets/files/Skyblock-Journey.wld) lalu pindah ke...
 
 ```bash
 sdcard
